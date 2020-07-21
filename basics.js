@@ -32,3 +32,8 @@ stringName.length // 6 ---> every string has a property of length.
 let songName = "Surfin in' USA"
 
 songName[0] // access the very first character in the string. 
+
+// string methods 
+
+songName.toUpperCase();
+songName.toLowerCase();
