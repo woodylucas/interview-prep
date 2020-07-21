@@ -40,4 +40,6 @@ songName.toLowerCase();
 
 
 'baseball'.indexOf('ball') // index: 4
-'baseball'.indexOf('b') // first instance of 'b' ---> returns 0. 
+'baseball'.indexOf('b') // first instance of 'b' ---> returns 0.
+
+'baseball'.slice(4) // --> starts at index of 4 remember STRINGs are immutable so it won't change the string 
