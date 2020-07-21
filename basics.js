@@ -28,3 +28,7 @@ counter++ // is the same as counter += 1
 let stringName = 'chicken'
 
 stringName.length // 6 ---> every string has a property of length.
+
+let songName = "Surfin in' USA"
+
+songName[0] // access the very first character in the string. 
