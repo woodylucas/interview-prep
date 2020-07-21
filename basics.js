@@ -37,3 +37,7 @@ songName[0] // access the very first character in the string.
 
 songName.toUpperCase();
 songName.toLowerCase();
+
+
+'baseball'.indexOf('ball') // index: 4
+'baseball'.indexOf('b') // first instance of 'b' ---> returns 0. 
