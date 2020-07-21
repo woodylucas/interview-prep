@@ -24,3 +24,7 @@ let counter = 0;
 counter++ // is the same as counter += 1 
 
 // strings are INDEXED starting from 0 
+
+let stringName = 'chicken'
+
+stringName.length // 6 ---> every string has a property of length.
