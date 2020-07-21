@@ -1,6 +1,6 @@
 // console.log('hello world')
 
-let hen = 4; 
+let hen = 4;  // initializing to 4
 
 // A raccoon killeda hen :( 
 hen - 1;
@@ -11,3 +11,16 @@ hen // still 4!
 hens = hen - 1; 
 
 hens // 3 
+
+
+let score = 0; 
+
+score += 10 --> // same as score = score + 10; 
+
+let counter = 0; 
+
+// unary operator, means that they're are only one side. 
+
+counter++ // is the same as counter += 1 
+
+// strings are INDEXED starting from 0 
