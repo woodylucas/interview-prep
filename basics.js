@@ -76,3 +76,6 @@ const ingredients = [
     'eel',
     'butter'
 ]
+
+ingredients.includes('fish') // false ---> checking to see if that element exist in array
+
