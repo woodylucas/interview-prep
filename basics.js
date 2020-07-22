@@ -65,3 +65,14 @@ const meats = [
 const allFoods = fruits.concat(veggies, meats)
 
 console.log(allFoods)
+
+const ingredients = [
+    'water', 
+    'corn starch', 
+    'flour', 
+    'cheese', 
+    'brown sugar', 
+    'shrimp', 
+    'eel',
+    'butter'
+]
