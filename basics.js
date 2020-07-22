@@ -15,7 +15,7 @@ hens // 3
 
 let score = 0; 
 
-score += 10 --> // same as score = score + 10; 
+score += 10  // -->  same as score = score + 10; 
 
 let counter = 0; 
 
@@ -45,4 +45,7 @@ songName.toLowerCase();
 'baseball'.slice(4) // --> starts at index of 4 remember STRINGs are immutable so it won't change the string 
 
 
-'this is very entertaining'.replace('entertaing', 'nice');
+'this is very entertaining'.replace('entertaing', 'nice'); // replace word.
+
+console.log('he said I ain\'t happy'); // to add a single ' 
+console.log("HELLO\n GOODBYE") // new line 
