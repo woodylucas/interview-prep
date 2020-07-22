@@ -49,3 +49,19 @@ songName.toLowerCase();
 
 console.log('he said I ain\'t happy'); // to add a single ' 
 console.log("HELLO\n GOODBYE") // new line 
+
+const fruits = [
+    'apple', 'banana'
+]
+
+const veggies = [
+    'asparagus', 'brussel sprouts'
+]
+
+const meats = [
+    'steak', 'chicken breast'
+]
+
+const allFoods = fruits.concat(veggies, meats)
+
+console.log(allFoods)
