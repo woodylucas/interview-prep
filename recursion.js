@@ -1,38 +1,47 @@
-// flatten an array 
-
-
-// PSEUDOCODE
-function flatten(arr) { // CREATE a function declaration : flatten INPUT: array ---> as parameters we will use the name: arr 
-   
+//Challenge 6
+function flattenRecursively(arr) {
+    // BASE: case: 
+  
+    return ( 
+      // BASE case: 
+      // USE a array method: REDUCE.
+      // ACC --> will be set to initial value which will be an empty array.
+      // CURRVAL --> will be either an array or an element.
+      // INITIAL VALUE --> []
+      arr.reduce((acc, currVal) => { // REDUCE will take 3 parameters: ACC, CURRVAL, INITIAL VALUE
+        
+        return acc.concat(Array.isArray(currVal) ? flattenRecursively(currVal) : currVal ) 
+        // IF currVal is an array ? --> Array.isArray () method 
+        
+            // invoke that array into flattenRecursively(currVal) 
+                  
+        // ELSE 
+        
+      
+                // RETURN currVal  
+      }, []) 
     
-     
-        //MERGE the ACC on to the CURVAL element 
-        // RETURN CURRVAL if it is an element
-        // RETURN the REDUCE method: 
-        return arr.reduce((acc, currVal) =>  { // CONSIST of a callback that will take 3 arguments --> ACC, CURRVAL, & INITIAL VALUE 
-            // ACC set to INITIAL VALUE which will be an empty array 
-            return acc.concat(Array.isArray(currVal) ? flatten(currVal) : currVal)  // REDUCE the array (ARR) that has elements of array to a single array. 
-        }, [])
+    )
+    
+  }
+  
+  // console.log(flattenRecursively([1, [2, 3, [4]]])); //-> [1, 2, 3, 4]
+  // console.log(flattenRecursively([1, {}, [3, [[4]]]])); //-> [1, {}, 3, 4]
+  
 
 
-
-
-
-
-
-        // CURRVAL will be set as the first element of the array
-    // }, []) // INITIAL VAL will be set to an empty array --> []; 
-}
-
+// function flatten(oldArray) {
+//     let newArray = [];
+//    for(let i = 0; i < oldArray.length; i++) {
+//        if(Array.isArray(oldArray[i])) {
+//            newArray = newArray.concat(flatten(oldArray[i])) 
+//        } else {
+//            newArray.push(oldArray[i])
+//        }
+//    }
+//    return newArray;
+// }
 
 
    
-     // RETURN CURRVAL if it is an element
 
-     const nestedArr = [ 
-         ['tony', 'tiger', 'jake', 'bob'], 
-         ['tyrone', 'craig'], 
-         ['blake', 'griffin'] 
-    ]
-
-    console.log(flatten(nestedArr));
