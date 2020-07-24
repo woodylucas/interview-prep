@@ -28,7 +28,27 @@ function sum(array) {
   // uncomment these to check your work
    // console.log(sum([1,1,1])); // -> returns 3
    // console.log(sum([1,2,3,4,5,6])); // -> returns 21
+
+// Challenge 3
+function palindrome(string) {
+    let reg = /[\W_]/g; // DECLARE a variable reg is initialize to a Regular Expression /[\W_]/g 
+    
+    let smallCase = string.toLowerCase().replace(reg, " "); // DECLARE a variable smallCase initialize to string.toLowerCase().replace(reg, ' ');
+    // console.log(smallCase)
+    // BASE CASE: 
+    // IF smallCase strings length is ZERO or ONE 
+    if(smallCase.length === 0 || smallCase.length === 1 ) return true; // RETURN true; 
+        
+    // IF smallCase first charcter doesn't egual the last character 
+    if(smallCase[0] !== smallCase[smallCase.length -1]) return false; // RETURN false.
+    
+    // RECURSIVE CALL
+     return palindrome(smallCase.substr(1, -1));
+  }
   
+  // console.log(palindrome("Anne, I vote more cars race Rome-to-Vienna")); //-> true
+  // console.log(palindrome("llama mall")); //-> true
+  // console.log(palindrome("jmoney")); //-> false
   
 
 
