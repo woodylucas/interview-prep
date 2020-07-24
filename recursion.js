@@ -12,6 +12,23 @@ function countdown(n, newArr = []) {
   // To check if you've completed it, uncomment these console.logs!
   // console.log(countdown(5));
   // console.log(countdown(10));
+
+
+  // Challenge 2
+function sum(array) {
+    // BASE CASE: 
+    if(array.length === 0) return 0// IF the array has no elements RETURN zero. --> We will use zero as an accumulator. 
+    
+    const elem = array[0]  // DECLARE a const variable: elem and initialize it to array[0] ---> first element.
+    
+    // RECURSIVE CALL: 
+    return elem + sum(array.slice(1));
+  }
+  
+  // uncomment these to check your work
+   // console.log(sum([1,1,1])); // -> returns 3
+   // console.log(sum([1,2,3,4,5,6])); // -> returns 21
+  
   
 
 
