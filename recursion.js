@@ -98,6 +98,27 @@ function flattenRecursively(arr) {
 //    return newArray;
 // }
 
-
+function isPrime(num, div) {
+    //prime number is a number divisible only by 1 and itself
+      
+      //SET div on first call
+      if(!div) div = Math.floor(num/2);
+      // console.log('DIV:', div)
+      //1 and 0 are not prime, return false
+      if(num < 2) return false; 
+      //once divider reaches 1 return true
+      if(div === 1) return true;
+      //if at any point num is divisible by divider, return false
+      if(num % div === 0) return false; 
+      //reduce divider by 1 each recursive call
+      return isPrime(num, div - 1); 
+    }
+    
+    // console.log(isPrime(1)); //-> false
+    // console.log(isPrime(2)); //-> true
+    // console.log(isPrime(3)); //-> true
+    // console.log(isPrime(4)); //-> false
+    
+    
    
 
