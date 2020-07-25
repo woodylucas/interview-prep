@@ -159,4 +159,21 @@ function findInOrderedSet(arr, target) {
   // const nums = [1, 4, 6, 7, 9, 17, 45];
   // console.log(findInOrderedSet(nums, 4));  //-> true
   // console.log(findInOrderedSet(nums, 2));  //-> false
+
+  //Challenge 8
+function countWaysToReachNthStair(n) {
+    // BASE CASE:  
+    if (n < 0) return 0// IF n is < 0 return 0 
+    if (n === 0) return 1// IF n is 0 return 1 
+    
+    // RECURSIVE CALL: --> n - 1 steps + n - 2 steps is the total amount of outcome steps you can take.
+    
+    return countWaysToReachNthStair(n - 1) + countWaysToReachNthStair(n - 2)
+    
+  }
+  
+  // console.log(countWaysToReachNthStair(1)) //-> 1 (only one way to climb 1 stair)
+  // console.log(countWaysToReachNthStair(2)) //-> 2 ((1, 1), (2))
+  // console.log(countWaysToReachNthStair(4)) //-> 5 ((1, 1, 1, 1), (1, 1, 2), (2, 1, 1), (2, 2))
+  
   
