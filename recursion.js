@@ -121,4 +121,23 @@ function isPrime(num, div) {
     
     
    
-
+//Challenge 5
+function pathFinder(obj, arr) {
+    // FOR IN LOOP --> to iterate over object properties 
+            // DECLARE a const: key 
+            // IN the obj
+    for(const key in obj) {
+      // BASE CASE: 
+      if(arr.length === 1) return obj[key]; // IF the array has ONE element RETURN the value of the object.
+      
+      if(key === arr[0]) obj = obj[key] // IF the key matches an array element SETthat key and to its value 
+    }
+    
+    // RECURSIVE CALL ---> reduce every array element to check if the key match that array element
+    return pathFinder(obj, arr.slice(1))
+  }
+  
+//   const obj  = { first: { second: { third: "finish" } }, second: { third: "wrong" } };
+//   const arr = ["first", "second", "third"];
+//   console.log(pathFinder(obj, arr));   //-> "finish"
+  
