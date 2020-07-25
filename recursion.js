@@ -176,4 +176,20 @@ function countWaysToReachNthStair(n) {
   // console.log(countWaysToReachNthStair(2)) //-> 2 ((1, 1), (2))
   // console.log(countWaysToReachNthStair(4)) //-> 5 ((1, 1, 1, 1), (1, 1, 2), (2, 1, 1), (2, 2))
   
+//Challenge 10
+function getRangeBetween(x, y, newArr = []) { // DECLARE a const variable for newArr initialize to an []; --> default variable 
+
   
+    // BASE CASE:
+    let start = x + 1 // DECLARE a variable start that adds the first input x to 1; 
+    
+    if(start >= y) return newArr;// IF x is greater than or EQUAL to RETURN a newArr
+    newArr.push(start)// PUSH x into newArr;
+        
+    // RECURSIVE CALL: 
+    
+    return getRangeBetween(x + 1, y, newArr);
+  }
+  
+  // console.log(getRangeBetween(2, 9)) //-> [3, 4, 5, 6, 7, 8]
+  // console.log(getRangeBetween(-5, 5)) //-> [-4, -3, -2, 1, 0, 1, 2, 3, 4]
