@@ -54,6 +54,51 @@ function palindrome(string) {
 
 
 
+
+
+function isPrime(num, div) {
+    //prime number is a number divisible only by 1 and itself
+      
+      //SET div on first call
+      if(!div) div = Math.floor(num/2);
+      // console.log('DIV:', div)
+      //1 and 0 are not prime, return false
+      if(num < 2) return false; 
+      //once divider reaches 1 return true
+      if(div === 1) return true;
+      //if at any point num is divisible by divider, return false
+      if(num % div === 0) return false; 
+      //reduce divider by 1 each recursive call
+      return isPrime(num, div - 1); 
+    }
+    
+    // console.log(isPrime(1)); //-> false
+    // console.log(isPrime(2)); //-> true
+    // console.log(isPrime(3)); //-> true
+    // console.log(isPrime(4)); //-> false
+    
+    
+   
+//Challenge 5
+function pathFinder(obj, arr) {
+    // FOR IN LOOP --> to iterate over object properties 
+            // DECLARE a const: key 
+            // IN the obj
+    for(const key in obj) {
+      // BASE CASE: 
+      if(arr.length === 1) return obj[key]; // IF the array has ONE element RETURN the value of the object.
+      
+      if(key === arr[0]) obj = obj[key] // IF the key matches an array element SETthat key and to its value 
+    }
+    
+    // RECURSIVE CALL ---> reduce every array element to check if the key match that array element
+    return pathFinder(obj, arr.slice(1))
+  }
+  
+//   const obj  = { first: { second: { third: "finish" } }, second: { third: "wrong" } };
+//   const arr = ["first", "second", "third"];
+//   console.log(pathFinder(obj, arr));   //-> "finish"
+  
 //Challenge 6
 function flattenRecursively(arr) {
     // BASE: case: 
@@ -98,46 +143,20 @@ function flattenRecursively(arr) {
 //    return newArray;
 // }
 
-function isPrime(num, div) {
-    //prime number is a number divisible only by 1 and itself
-      
-      //SET div on first call
-      if(!div) div = Math.floor(num/2);
-      // console.log('DIV:', div)
-      //1 and 0 are not prime, return false
-      if(num < 2) return false; 
-      //once divider reaches 1 return true
-      if(div === 1) return true;
-      //if at any point num is divisible by divider, return false
-      if(num % div === 0) return false; 
-      //reduce divider by 1 each recursive call
-      return isPrime(num, div - 1); 
-    }
+//Challenge 7
+function findInOrderedSet(arr, target) {
+    const elem = arr[0]// DECLARE a const variable elem initialize it to array[0]
     
-    // console.log(isPrime(1)); //-> false
-    // console.log(isPrime(2)); //-> true
-    // console.log(isPrime(3)); //-> true
-    // console.log(isPrime(4)); //-> false
+    // console.log('ELEMENT:', elem) // TEST element check.
     
+    if(elem === target) return true; // IF an element in nums is === to target
     
-   
-//Challenge 5
-function pathFinder(obj, arr) {
-    // FOR IN LOOP --> to iterate over object properties 
-            // DECLARE a const: key 
-            // IN the obj
-    for(const key in obj) {
-      // BASE CASE: 
-      if(arr.length === 1) return obj[key]; // IF the array has ONE element RETURN the value of the object.
-      
-      if(key === arr[0]) obj = obj[key] // IF the key matches an array element SETthat key and to its value 
-    }
+    if(arr.length === 0) return false; // IF there are no more elements to check return false
     
-    // RECURSIVE CALL ---> reduce every array element to check if the key match that array element
-    return pathFinder(obj, arr.slice(1))
+    return findInOrderedSet(arr.slice(1), target) // recursive call.
   }
   
-//   const obj  = { first: { second: { third: "finish" } }, second: { third: "wrong" } };
-//   const arr = ["first", "second", "third"];
-//   console.log(pathFinder(obj, arr));   //-> "finish"
+  // const nums = [1, 4, 6, 7, 9, 17, 45];
+  // console.log(findInOrderedSet(nums, 4));  //-> true
+  // console.log(findInOrderedSet(nums, 2));  //-> false
   
