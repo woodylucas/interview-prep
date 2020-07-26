@@ -195,34 +195,47 @@ function getRangeBetween(x, y, newArr = []) { // DECLARE a const variable for ne
   // console.log(getRangeBetween(-5, 5)) //-> [-4, -3, -2, 1, 0, 1, 2, 3, 4]
 
 
-  //Challenge 9
+ //Challenge 9
 function getPermutations(arr) {
-    // DECLARE a const variable output initialize to [];
+    const output = [];// DECLARE a const variable output initialize to [];
     // DECLARE a function swap()
-    // Input: will be (arrSwap, index1, index2)
-        // DECLARE a const variable temp initialize to arrSwap[index1]
-        // Swap both elements arrSwap[index1] = arrSwap[index2];
-        // Then swap the last element with arrSwap[index2] = temp;
-    // DECLARE a function generate() 
-    // Input: integer (which will be the arrays length) and array --> labeled as int, heapArr
-        // IF int is equal to 1 
-            // Push heapArr into array and use a slice method to copy (avoid mutation)
-            // RETURN
+    function swap(arrSwap, index1, index2) { // Input: will be array and two indices Labled --> (arrSwap, index1, index2)
+      
+      const temp = arrSwap[index1] // DECLARE a const variable temp initialize to arrSwap[index1]
+     
+      arrSwap[index1] = arrSwap[index2] // Swap both elements arrSwap[index1] = arrSwap[index2];
+      
+      arrSwap[index2] = temp; // Then swap the last element with arrSwap[index2] = temp;
+    };
     
-    // Recursive call 
-        // generate(int - 1, heapArr) --> arrays length minus 1
-        // FOR LOOP: 
+    // DECLARE a function generate() 
+    function generate(int, heapArr) { // Input: integer (which will be the arrays length) and array --> labeled as int, heapArr
+      
+      if(int === 1) {	// IF int is equal to 1 
+        output.push(heapArr.slice()) // Push heapArr into OUTPUT array and use a slice method to copy (avoid mutation)
+        return;
+      }
+       // Recursive call 
+      generate(int - 1, heapArr); // generate(int - 1, heapArr) --> arrays length minus 1
+      
+      // FOR LOOP: 
         // Set counter to 0
         // Break when counter reaches the length of array (int -1)
         // Incremenet counter by 1 w/ unary operator.
-    
-            // IF int MOD 2 is 0 --> EVEN 
-                // swapInPlace(heapArr, i, n - 1) --> swap those two indices 
-            // ELSE (if its odd)
-                // swapInPlace(heapArr, 0, n - 1) --> swap first element with length.
-            // generate(int - 1, heapArr) --> arrays length minus 1 --> while we are within the loop.
+      for(let i = 0; i < int - 1; i++) {
         
-        // generate(arr.length, arr.slice())
-    // RETURN output;
+        if(int % 2 === 0) { // IF int MOD 2 is 0 --> EVEN 
+          
+          swap(heapArr, i, int - 1) // swapInPlace(heapArr, i, int - 1) --> swap those two indices 
+        } else { 	// ELSE (if its odd)
+          swap(heapArr, 0, int - 1) // swapInPlace(heapArr, 0, int - 1) --> swap first element with length.
+        }
+        generate(int - 1, heapArr) // invokes recursive call --> while we are within the loop.
+      }
+      
+    }
+    
+    generate(arr.length, arr.slice()) // invoke function w/ arguments. 
+    return output; // RETURN the result of output
   }
   
