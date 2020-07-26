@@ -193,3 +193,36 @@ function getRangeBetween(x, y, newArr = []) { // DECLARE a const variable for ne
   
   // console.log(getRangeBetween(2, 9)) //-> [3, 4, 5, 6, 7, 8]
   // console.log(getRangeBetween(-5, 5)) //-> [-4, -3, -2, 1, 0, 1, 2, 3, 4]
+
+
+  //Challenge 9
+function getPermutations(arr) {
+    // DECLARE a const variable output initialize to [];
+    // DECLARE a function swap()
+    // Input: will be (arrSwap, index1, index2)
+        // DECLARE a const variable temp initialize to arrSwap[index1]
+        // Swap both elements arrSwap[index1] = arrSwap[index2];
+        // Then swap the last element with arrSwap[index2] = temp;
+    // DECLARE a function generate() 
+    // Input: integer (which will be the arrays length) and array --> labeled as int, heapArr
+        // IF int is equal to 1 
+            // Push heapArr into array and use a slice method to copy (avoid mutation)
+            // RETURN
+    
+    // Recursive call 
+        // generate(int - 1, heapArr) --> arrays length minus 1
+        // FOR LOOP: 
+        // Set counter to 0
+        // Break when counter reaches the length of array (int -1)
+        // Incremenet counter by 1 w/ unary operator.
+    
+            // IF int MOD 2 is 0 --> EVEN 
+                // swapInPlace(heapArr, i, n - 1) --> swap those two indices 
+            // ELSE (if its odd)
+                // swapInPlace(heapArr, 0, n - 1) --> swap first element with length.
+            // generate(int - 1, heapArr) --> arrays length minus 1 --> while we are within the loop.
+        
+        // generate(arr.length, arr.slice())
+    // RETURN output;
+  }
+  
