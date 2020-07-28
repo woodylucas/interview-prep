@@ -111,8 +111,55 @@ function countUniqueValues(arr){
 
   }
 
-  isSubsequence('sing' ,'sting');
+//   isSubsequence('sing' ,'sting');
 
+
+// FREQUENCY COUNTER or HASH TABLES
+
+// Anagrams given two strings, write a function to determine if the second string is an anagram of the first. An anagram is a word a pharse, or a name formed by rearranging the letters of another
+// such as cinema, from iceman 
+
+// Declare a function validAnagram 
+function validAnagram(str1, str2){
+    if(str1.length !== str2.length) return false;// IF str1 length !== str2 length RETURN false;
+    
+    const str1Array = str1.split('') // Declare a const str1Array initialize to the string w/ split method str1.split('')
+    
+    const str2Array = str2.split('') // Declare a const str2Array initialize to the string w/ split method str2.split('')
+    
+    const freqCount1 = {} // Declare a const variable freqCount1 = {}
+    
+    const freqCount2 = {} // Declare a const variable freqCount2 = {}
+   
+    // FOR OF iterate through Array 
+    // Declare a const variable val OF str1Array
+    for(const val of str1Array) {
+        if(freqCount1[val]) { // IF the freqCount1 w/ the letter as a key has a value 
+            freqCount1[val]++;  // Increment the letter 
+        } else { // ELSE if it isn't present 
+            freqCount1[val] = 1 // Set the value to 1 
+        }
+    }
+
+    // FOR OF iterate through Array 
+    // Declare a const variable val OF str2Array
+    for(const val of str2Array) {  // Declare a const variable elem OF str1
+        if(freqCount2[val]) {  // IF the freqCount2 w/ the letter as a key has a value 
+            freqCount2[val]++  // Increment the letter 
+        } else { // ELSE if it isn't present 
+            freqCount2[val] = 1; // Set the value to 1 
+        }
+    }
+
+    // FOR IN LOOP: to iterate through key and value pairs. 
+    // Declare a const variable key in freqCount1
+    for (const key in freqCount1) { // IF key is not in freqCounter2 RETURN false
+        if (!(key in freqCount2)) return false; // IF freqCount1 value doesn't match freqCount 2 RETURN false 
+        if(freqCount2[key] !== freqCount1[key]) return false;
+    }
+   return true // RETURN true.
+}
+// console.log(validAnagram('cinema', 'iceman'))
 
     
     
