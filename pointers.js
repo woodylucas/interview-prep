@@ -87,6 +87,33 @@ function countUniqueValues(arr){
     return i + 1 // RETURN i + 1 --> this will return the arrays length
   }
     
+
+
+  function isSubsequence(str1, str2) {
+    // good luck. Add any arguments you deem necessary.
+    let i = 0 // Declare a variable i initialize to zero 
+
+    let j = 0  // Declare a variable j initialize to zero 
+
+    if (!str1) return true; // IF there is no string 1 return true. 
+
+     while (j < str2.length) { // Break condition while j is < string2.length 
+
+         if(str2[j] === str1[i]) i++  // So as long as str2 is str1 increment the character by 1 
+
+         if(i === str1.length) return true // IF the counter of I is the same as str1 length return true 
+         
+         j++; // Incremenet j by 1.
+         console.log('INDEX i:', i, 'INDEX j:', j)
+     }
+     return false;
+    
+
+  }
+
+  isSubsequence('sing' ,'sting');
+
+
     
     
     
