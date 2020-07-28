@@ -38,6 +38,31 @@ function sumZero(arr) { // Input: arr
     }
 }    
 
+// Average pairs 
+
+// Write a function called averagePair. Given a sorted array of integers and a target average. If there is a pair of values in the array where the average of pair equals target average 
+// There may be one pair that matches the target.
+
+// Declare averagePair() 
+function averagePair(array, target) { // Input: array, target  
+
+    let left = 0// Declare a variable left = 0
+    let right = array.length - 1 // Declare a variable right = last element in the array 
+    while (left < right) { // WHILE left is less that right 
+        let avg = array[left] + array[right] / 2; // Declare a variable avg initialize to left + right / 2 
+        if (avg === target) {  // IF avg === target 
+            return true; // RETURN true
+        } else if(avg < target) { // ELSE IF  avg < target 
+            left++ // Increment the left side 
+        } else {
+            right-- // Decrement the right side
+        }
+    }
+return false 
+       
+}
+
+
 // Count Unique Values 
 
 // Implement a function called countUniqueValues, which accepts a sorted array, and counts the unique values in the array. There can be negative numbers in the array, but it will be SORTED
