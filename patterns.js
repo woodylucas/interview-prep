@@ -203,6 +203,8 @@ function validAnagram2(str1, str2) {
 
 // Declare a function maxSubarray()
 function maxSubarraySum(arr, n) { // Input: array and a number --> Parameters: arr, n 
+    // EDGE CASE: 
+    if(arr.length < n) return null // IF arr.length is less than n RETURN null.
     let maxSum = 0; // Declare a variable maxSum initialzie to 0
     let tempSum = 0;// Declare a variable tempSum initialize to 0
     // FOR LOOP:
