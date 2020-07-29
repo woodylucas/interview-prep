@@ -190,7 +190,43 @@ function validAnagram2(str1, str2) {
     return true
 }
 
-console.log(validAnagram2('cinema', 'iceman'))
+// console.log(validAnagram2('cinema', 'iceman'))
+
+
+// Sliding Window Pattern 
+// The pattern involes creating a window can be either an array or number from one position to another 
+// Depending on a certain condition, the window either increases or closes (and a new window is created)
+// Very useful for keeping track of subset of data in an array/string 
+
+// Write a function called maxSubarray Sum which accepts an array of integers and a number called n 
+// The function should calculate the maximum sum of n consecutive elements in the array 
+
+// Declare a function maxSubarray()
+function maxSubarraySum(arr, n) { // Input: array and a number --> Parameters: arr, n 
+    let maxSum = 0; // Declare a variable maxSum initialzie to 0
+    let tempSum = 0;// Declare a variable tempSum initialize to 0
+    // FOR LOOP:
+    // Set counter to 0 
+    // Break when counter reaches the number of n 
+    // Increment counter by 1 
+    for(let i = 0; i < n; i++) {
+        maxSum += arr[i] // Update the sum of the total amount of n array elements and store its value in maxSum.
+    }
+    tempSum = maxSum; // Reassign the value of tempSum to equal the value of maxSum 
+    // FOR LOOP: 
+    // Set counter to n 
+    // Break counter when it reaches the end of the array. 
+    // Increment counter by 1 
+    for (let i = n; i < arr.length; i++) {
+        tempSum = tempSum - arr[i - n] + arr[i]  // Set the value of tempSum to initialize the current temp sum - n amount of elements, then add a element 
+        maxSum = Math.max(tempSum, maxSum)  // Set maxSum to the max of the two variables maxSum and tempSum 
+    }
+    return maxSum;
+}
+
+
+
+// console.log(maxSubarraySum([2,6,9,2,1,8,5,6,3],3))
     
     
         
