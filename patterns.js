@@ -229,7 +229,38 @@ function maxSubarraySum(arr, n) { // Input: array and a number --> Parameters: a
 
 
 // console.log(maxSubarraySum([2,6,9,2,1,8,5,6,3],3))
-    
+
+function maxSubarraySum2(arr, n){
+    // EDGE CASE: 
+    if(arr.length < n) return null;// IF arrays length is less than n RETURN null.
+    let maxSum = 0;// Declare a varible maxSum initialize to 0.
+    let tempSum = 0;// Declare a variable tempSum initialize to 0.
+
+    // FOR LOOP: 
+    // Set counter to 0 
+    // Break when counter reaches n 
+    // Increment counter by 1 .
+    for(let i = 0; i < n; i++) {
+        maxSum += arr[i];// maxSum will add and save the value of the elements of the array length of n 
+    }
+
+
+    tempSum = maxSum;// Set tempSum to maxSum 
+
+    // FOR LOOP:
+    // Set counter to n --> will start at that position in the array.
+    // Break when counter reaches the end of the array
+    // Increment counter by 1 w/ unary operator.
+    for(let i = n; i< arr.length; i++) {
+        tempSum = tempSum - arr[i - n] + arr[i]; // Set the value of tempSum to tempSum(currentValue) minus the first element, then adding the next element. 
+        maxSum = Math.max(maxSum, tempSum );// Set maxSum initialize to the method Math.max with maxSum and tempSum as the arguments 
+    }
+
+    return maxSum; // RETURN maxSum.
+
+}
+
+console.log(maxSubarraySum2([100, 200, 300, 400], 2)) // -> 700
     
         
        
