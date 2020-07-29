@@ -260,9 +260,43 @@ function maxSubarraySum2(arr, n){
 
 }
 
-console.log(maxSubarraySum2([100, 200, 300, 400], 2)) // -> 700
+// console.log(maxSubarraySum2([100, 200, 300, 400], 2)) // -> 700
+
+
+function minSubArrayLen(arr, sum) {
+    let total = 0; // Declare a variable total initialize to 0. ---> 
     
-        
-       
+    let startPoint = 0; // Declare a variable start initialize to 0. --> the start pointer 
+    
+    let endPoint = 0;  // Declare a variable end initialize to 0. --> end pointer 
+    
+    let minLen = Infinity; // Declare a variable minLen initialize to Infinity. --> to take account of all postive integers
+    
+    // WHILE LOOP: while start is less than the array's length. 
+    while (startPoint < arr.length) {
+        // IF the current window doesn't add up to the given sum 
+            //move the pointer to the right 
+        if(total < sum && endPoint < arr.length) { // IF total is less than sum AND end is less than the arrays length. 
+            // console.log('TOTAL:', total )
+            total += arr[endPoint] // Total will add the value of array elements to all the way to end.
+            endPoint++;  // Increment the end pointer by one w/ unary operator. 
+
+        } else if(total >= sum) { // ELSE IF total greater than OR EQUAL to sum.
+            // console.log('TOTAL:', total)
+            // console.log('START', startPoint)
+            // console.log('END', endPoint)
+            // console.log('DIFFRENCE:', endPoint - startPoint)
+            minLen = Math.min(minLen, endPoint - startPoint)// Set minLen to Math.min of minLen and the DIFFERENCE of end and start 
+            total -= arr[startPoint] // Substract the total from the startPointer of the array.
+            startPoint++; // Increment start by 1 
+        } else { // ELSE the total is less than required
+            break;  // Break; 
+        }
+    }
+      return minLen === Infinity ? 0 : minLen  // IF minLen is Infinity RETURN zero or RETURN minLen. 
+
+}
+                        //  0 1 2 3  4 5 6 7  8  9 10 
+console.log(minSubArrayLen([1,4,16,22,5,7,8,9,10], 95))
    
     
