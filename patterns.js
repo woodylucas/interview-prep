@@ -161,7 +161,36 @@ function validAnagram(str1, str2){
 }
 // console.log(validAnagram('cinema', 'iceman'))
 
-    
+
+function validAnagram2(str1, str2) {
+    // EDGE CASE: 
+    if(str1.length !== str2.length) return false; // IF str1 length is not equal to str2 length RETURN false
+    const lookup = {}; // Declare a const variable lookup initialize to {}
+    // FOR LOOP: 
+    // Set counter to 0 
+    // Break when counter reaches the end of the string 1
+    // Increment counter by 1 w/ unary operator.
+    for(let i = 0; i < str1.length; i++) {
+        const letter = str1[i] // Declare a variable letter initialize to str[i]
+        // If the letter exist increment, otherwise set to 1
+        lookup[letter] ? lookup[letter]++ : lookup[letter] = 1; 
+    }
+    // FOR LOOP: 
+    // Set counter to 0 
+    // Break when counter reached the end of string 2 
+    // Increment counter by 1 w/ unary operator.
+    for(let i = 0; i < str2.length; i++) {
+        const letter = str2[i] // Declare a variable letter initialize to string 2 element 
+        if(!lookup[letter]) { // IF the letter is not in lookup object 
+            return false; // RETURN false 
+        }  else {
+            lookup[letter]-- // Decrement by 1 w/ unary operator 
+        }
+    }
+    return true
+}
+
+console.log(validAnagram2('cinema', 'iceman'))
     
     
         
