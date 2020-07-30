@@ -297,6 +297,52 @@ function minSubArrayLen(arr, sum) {
 
 }
                         //  0 1 2 3  4 5 6 7  8  9 10 
-console.log(minSubArrayLen([1,4,16,22,5,7,8,9,10], 95))
+// console.log(minSubArrayLen([1,4,16,22,5,7,8,9,10], 95))
    
+// Declare a function findLongestSubstring()
+function findLongestSubstring(str) { // Input: str
+    let longest = 0; 
+    let seen = {};
+    let start = 0
+
+    for (let i = 0; i < str.length; i++) {
+        let char = str[i];
+        if (seen[char]) {
+        start = Math.max(start, seen[char]);
+        }
+       
+    // index - beginning of substring + 1 (to include current in count)
+        longest = Math.max(longest, i - start + 1); 
+    // store the index of the next char so as to not double count
     
+     seen[char] = i + 1;
+    }
+    return longest;
+}
+
+
+console.log(findLongestSubstring('thisisawesome'))
+
+function lengthOfLongestSubstring(str) {
+    let left = 0; 
+    let longest = 0;
+    const count = {};
+
+    for(let right = 0; right < str.length;) { // Don't increment block will contain instructions to increment left or right 
+        if(!count[str[right]]) { // IF the key exist and there is no value. 
+            count[str[right]] = 0; // Set the value to 0
+        }
+        count[str[right]]++; // Increment the value by 1 
+
+        if(Object.values(count).some(elem => elem > 1)) { // IF one of the values is greater than 1 means it is a duplicate.
+            count[str[left]]--; // Remove that duplicate by decrementing down by 1. So the character is no longer in our window 
+            left++; // Increment the next substring to evaluate the next substring 
+        }  
+        longest = Math.max(longest, right - left + 1);
+        right++;
+    }
+    return longest; 
+}
+
+
+console.log(lengthOfLongestSubstring('thisisawesome'))
