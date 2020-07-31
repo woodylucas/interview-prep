@@ -113,4 +113,28 @@ function chunk(array, size) {
     return chunks;
  }
 
- console.log(chunk([1, 2, 3, 4, 5], 2))
+//  console.log(chunk([1, 2, 3, 4, 5], 2))
+
+function whileLoop(arr) {
+  let mapArr = [];
+  let productOf = 2; 
+  let index = 0; 
+  while(index < arr.length) {
+      mapArr.push(productOf *= arr[index])
+      index++; 
+  }
+  return mapArr; 
+}
+
+// console.log(whileLoop([1, 2, 3, 4, 5]))
+
+function factorialize(num) {
+    let productOf = 1
+    for(let i = 1; i <= num ; i++) {
+      productOf *= i
+      console.log(productOf)
+    }
+   return productOf;
+  }
+  
+  console.log(factorialize(5))
