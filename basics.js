@@ -79,7 +79,7 @@ const ingredients = [
 
 ingredients.includes('fish') // false ---> checking to see if that element exist in array
 
-
+/*
 function chunk(array, size) {
     const chunks = []; // Declare a variable chunks initialize to an empty array.
  
@@ -95,6 +95,22 @@ function chunk(array, size) {
          }
      }             
      return chunks; // RETURN chunks. 
+ }
+
+*/
+
+ function chunk(array, size) {
+    const chunks = [];// Declare a variable chunks set to an empty array. 
+    let index = 0;// Declare a variable index set to 0. 
+ 
+    // WHILE LOOP. 
+    // While index is less than arrays length
+    while(index < array.length) {
+        console.log('INDEX:',index)
+         chunks.push(array.slice(index, index + size))// Push array COPY of starting at the index , and index + its size 
+         index += size// Set the index value to size.
+    }
+    return chunks;
  }
 
  console.log(chunk([1, 2, 3, 4, 5], 2))
