@@ -47,8 +47,8 @@ songName.toLowerCase();
 
 'this is very entertaining'.replace('entertaing', 'nice'); // replace word.
 
-console.log('he said I ain\'t happy'); // to add a single ' 
-console.log("HELLO\n GOODBYE") // new line 
+// console.log('he said I ain\'t happy'); // to add a single ' 
+// zconsole.log("HELLO\n GOODBYE") // new line 
 
 const fruits = [
     'apple', 'banana'
@@ -64,7 +64,7 @@ const meats = [
 
 const allFoods = fruits.concat(veggies, meats)
 
-console.log(allFoods)
+// console.log(allFoods)
 
 const ingredients = [
     'water', 
@@ -79,3 +79,22 @@ const ingredients = [
 
 ingredients.includes('fish') // false ---> checking to see if that element exist in array
 
+
+function chunk(array, size) {
+    const chunks = []; // Declare a variable chunks initialize to an empty array.
+ 
+     // FOR OF: iterate through array
+     // Declare a const variable elem OF array. 
+     for(const elem of array) {
+         const last = chunks[chunks.length - 1 ] // Declare a const variable last, initialize to the last element in chunks
+         console.log(last)
+         if(!last || last.length === size) { // IF last doesn't exist OR last variable length is size. 
+             chunks.push([ elem ]) // PUSH a new array and element into chunks
+         } else {  // ELSE 
+             last.push(elem) // PUSH element into last element.
+         }
+     }             
+     return chunks; // RETURN chunks. 
+ }
+
+ console.log(chunk([1, 2, 3, 4, 5], 2))
