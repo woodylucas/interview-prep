@@ -233,7 +233,45 @@ function anagrams(stringA, stringB) {
       return true;// RETURN true. 
   }
   
-  console.log(anagrams('RAIL! SAFETY!', 'fairy tales'))
+//   console.log(anagrams('RAIL! SAFETY!', 'fairy tales'))
+
+function anagrams2(stringA, stringB) {
+    const charCount1 = buildCharMap(stringA); // Declare a const variable charCount1  set to buildCharMap passing in stringA.
+  
+    const charCount2 = buildCharMap(stringB) // Declare a const variable charCount2  set to buildCharMap passing in stringA.
+  
+    // EDGE CASE: 
+    
+    // IF the keys in charCount1 does not match charCount2 
+    if(Object.keys(charCount1).length !== Object.keys(charCount2).length) {
+      return false; // RETURN false 
+    }
+      
+    
+    // FOR IN LOOP: to iterate over key value pairs. 
+    for(const val in charCount1) {
+      if(charCount1[val] !== charCount2[val]) {
+        return false // IF the value do not match 
+      }
+    }
+    return true; // RETURN true. 
+  
+    console.log('STRING A:', charCount1)
+    console.log('STRING B:', charCount2)
+  
+  }
+  
+  function buildCharMap(str) { // helper map function
+    const freqCount = {};// Declare a const variable freqCount set to an empty object. 
+    // FOR OF LOOP: iterate through the str w/ removing special characters.
+    for(const char of str.replace(/[^\w]/g, '').toLowerCase()) {
+      freqCount[char] = (freqCount[char] || 0) + 1;
+    }
+      // IF the key has a value set the value to one else increment by 1.
+    return freqCount; // RETURN freqCount
+  }
+  
+  anagrams2('RAIL! SAFETY!', 'fairy tales')
 
 
 // Sliding Window Pattern 
