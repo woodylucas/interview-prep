@@ -137,4 +137,12 @@ function factorialize(num) {
    return productOf;
   }
   
-  console.log(factorialize(5))
+//   console.log(factorialize(5))
+
+function spliceMethod(arr) {
+    //      start remove add 
+    arr.splice(2, 0, 'zebra', 'lion') // IF 
+    return arr;
+}
+const array = ['shark,', 'salmon', 'whale','bear', 'lizard', 'tortoise']
+console.log(spliceMethod(array))
