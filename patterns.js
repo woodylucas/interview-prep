@@ -193,6 +193,49 @@ function validAnagram2(str1, str2) {
 // console.log(validAnagram2('cinema', 'iceman'))
 
 
+function anagrams(stringA, stringB) {
+  
+    let regexStrA = stringA.replace(/[^\w]/g, '').toLowerCase();  // Delcare a variable regexStrA set to string A w/ replace method /[^\w]/g, '' and a lowercase method
+    
+    let regextStrB = stringB.replace(/[^\w]/g, '').toLowerCase(); // Declare a variable regextStrB set string B w/ replace method [/[^\w]/g, '' and a lowercase method
+  
+     // EDGE CASE: 
+  
+    if(regexStrA.length !== regextStrB.length) return false; // IF regexStrA length is not the same as regexStrA return false
+  
+   const freqCount = {}; // Declare a const variable freqCount set to an empty object.
+  
+    // FOR LOOP: iterate through regexStrA 
+    for(const val of regexStrA) { 
+      if(!freqCount[val]) { // IF the key exist but has no value in freqCount
+  
+       freqCount[val] = 1; // Set the value in freqCount to 1 
+  
+      } else { // ElSE (if the value exist)
+      
+       freqCount[val]++; // Increment the value by 1. 
+      }
+    }
+      // FOR LOOP: iterate through regextStrB
+      for(const val of regextStrB){
+  
+        // IF the value doesn't match the freqCount object 
+        if(!freqCount[val]) { 
+  
+          return false; // RETURN false. 
+  
+        } else {  // ELSE (if the value exist)
+  
+          freqCount[val]--// Decrement the value in the freqCount by 1. 
+  
+        }
+      }
+      return true;// RETURN true. 
+  }
+  
+  console.log(anagrams('RAIL! SAFETY!', 'fairy tales'))
+
+
 // Sliding Window Pattern 
 // The pattern involes creating a window can be either an array or number from one position to another 
 // Depending on a certain condition, the window either increases or closes (and a new window is created)
@@ -321,7 +364,7 @@ function findLongestSubstring(str) { // Input: str
 }
 
 
-console.log(findLongestSubstring('thisisawesome'))
+// console.log(findLongestSubstring('thisisawesome'))
 
 function lengthOfLongestSubstring(str) {
     let left = 0; 
@@ -345,4 +388,4 @@ function lengthOfLongestSubstring(str) {
 }
 
 
-console.log(lengthOfLongestSubstring('thisisawesome'))
+// console.log(lengthOfLongestSubstring('thisisawesome'))
