@@ -140,9 +140,25 @@ function factorialize(num) {
 //   console.log(factorialize(5))
 
 function spliceMethod(arr) {
-    //      start remove add 
-    arr.splice(2, 0, 'zebra', 'lion') // IF 
+    //splice(startIdx, deleteCount, itemsToInsert)
+    // ====================================================
+    // INSERTING W/ SPLICE 
+    // ====================================================
+    arr.splice(1, 0, 'octopus');
+    // ['shark', 'octopus', 'salmon', 'salmon', 'whale', 'bear', 'lizard', 'tortoise' ]
+    // ====================================================
+    // DELETING W/ SPLICE 
+    // ====================================================
+    // AT index 5 delete 2 items
+    arr.splice(5, 2)
+    // ['shark', 'octopus', 'salmon', 'salmon', 'whale', 'bear' ]
+    // ====================================================
+    // REPLACING W/ SPLICE 
+    // ====================================================
+    arr.splice(3, 2, 'ocra', 'grizzly')
+    // ['shark', 'octopus', 'salmon', 'salmon', 'ocra', 'grizzly' ]
     return arr;
+
 }
 const array = ['shark,', 'salmon', 'whale','bear', 'lizard', 'tortoise']
 console.log(spliceMethod(array))
