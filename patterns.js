@@ -450,3 +450,50 @@ function pyramid(n) {
         
        
 }
+
+
+function pyramid(n, row = 0, level = '') {
+    // Recursive solution 
+    const oddSequence = (2 * n - 1); // Declare a variable oddSequence set to (2n - 1)
+    // BASE CASE:
+
+    // IF row is the same as n 
+    if(row === n) return; // BREAK 
+
+        
+    
+    if(level.length === oddSequence) { // IF the length of level string is the same as oddSeqeunce
+        console.log(level);  // PRINT level
+        // RECUSIVE LINE : 
+
+        return pyramid(n, row + 1); // RETURN pyramid w/ row being incremented by 1 
+    }
+
+   
+    const midpoint = Math.floor( oddSequence / 2 );  // Declare a variable midpoint set to (oddSequence / 2 )
+    
+   
+    let add;  // Declare a undefined variable add. 
+
+    // IF midpoint DIFF of row is LESS than or EQUAL to level's string length AND midPoint SUM of row GREATER than or equal to leve's strings length 
+    if(midpoint - row <= level.length && midpoint + row >= level.length) {
+         
+        add = '#'; // Set the value of ADD to '#' 
+
+    } else {   // ELSE 
+
+        add = ' '; // SET the value of ADD to a a space --> ' '
+    }
+
+    pyramid(n, row, level + add)   // PYRAMID invoked with these arguments  n, row, level + add
+}
+
+//   pyramid(1)
+//       '#'
+//   pyramid(2)
+//       ' # '
+//       '###'
+//   pyramid(3)
+//       '  #  '
+//       ' ### '
+//       '#####'
