@@ -427,3 +427,26 @@ function lengthOfLongestSubstring(str) {
 
 
 // console.log(lengthOfLongestSubstring('thisisawesome'))
+
+function pyramid(n) {
+    let oddSequence = (2 * n) - 1 // Declare a variable oddSequence set to a sequence of odd numbers for the columns.
+    let midpoint = Math.floor(oddSequence / 2); // Declare a variable midpoint set to pyramid divided by 2 to obtain the midpoint. 
+    
+    // FOR LOOP: iterate from 0 to n. 
+    for(let row = 0; row < n; row++) {
+        // Declare a variable level set to an emptyString 
+        let level = "";
+        // FOR LOOP: iterates 0 to oddSequence 
+        for(let column = 0; column < oddSequence; column++) {
+            // IF midpoint - row less than or equal to column AND midpoint + row is GREATER than or equal to column 
+            if(midpoint - row <= column && midpoint + row >= column) {
+                level += '#'; // Set level to a hash.
+            } else {   // ELSE 
+                level += " " // Set level to an empty string 
+            }
+        }
+         console.log(level)// PRINT level. 
+    }
+        
+       
+}
