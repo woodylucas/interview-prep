@@ -497,3 +497,90 @@ function pyramid(n, row = 0, level = '') {
 //       '  #  '
 //       ' ### '
 //       '#####'
+
+
+function matrix(n) {
+    const results = [];// Declare a variable result initialize to empty arrays of arrays 
+    // FOR LOOP:
+      // PUSH a new array into results array.
+      for(let i = 0; i < n; i++) {
+        results.push([]);
+      }
+  
+      console.log(results)
+  
+    let startRow = 0;// Declare a variable startRow set to 0. 
+    let endRow = n - 1;// Declare a variable endRow set to n - 1.
+    let startColumn = 0;// Declare a variable startColumn set to 0.
+    let endColumn = n - 1;// Declare a variable endColumn set to n - 1. 
+    let count = 1
+  
+    // WHILE LOOP: 
+    // While the row and columns are less than or equal to each other. 
+    while(startColumn <= endColumn && startRow <= endRow) {
+  
+      // FIRST row 
+  
+      // FOR LOOP: 
+      // Set counter to startColumn 
+      // Break when startColumn reaches endColumn
+      // Increment by 1. 
+      for(let i = startColumn; i <= endColumn; i++) {
+        results[startRow][i] = count;// Set results startRow to counter
+        count++; // Increment counter by 1. 
+        console.log(count)
+       
+      }
+      startRow++  // Increment startRow by 1.
+  
+  // RIGHT column: 
+  
+      // FOR LOOP:
+      // Set counter startRow
+      // Break when startRow reaches the end of endRow.
+      for(let i = startRow; i <= endRow; i++ ) {
+        results[i][endColumn] = count// Set results endRow to counter 
+        count++; // Increment counter by 1.
+      }
+      endColumn--// Decrement endColumn by 1 
+  
+    // Bottow Row
+      // FOR LOOP: 
+      // Set counter to endColumn 
+      // Break when startColumn reaches endColumn
+      // Decrement endColumn by 1.
+      for(let i = endColumn; i >= startColumn; i--) {
+        results[endRow][i] = count;// Set results to endRow to counter
+        count++; // Increment count by 1. 
+      }
+      
+      endRow--// Decrement endRow
+  
+    // Start Column: 
+      // FOR LOOP: 
+      // Set counter to endRow 
+      // Break when startRow reaches counter.
+      // Decrement endRow by 1.
+      for(let i = endRow; i >= startRow; i--) {
+        results[i][startColumn] = count// Set result to startColumn 
+        count++// Increment counter by 1
+      }
+      startColumn++;
+    }
+    return results;
+  }
+  
+  
+  // --- Examples
+    // matrix(2)
+  //     [[1, 2],
+  //     [4, 3]]
+  //   matrix(3)
+  //     [[1, 2, 3],
+  //     [8, 9, 4],
+  //     [7, 6, 5]]
+  //  matrix(4)
+  //     [[1,   2,  3, 4],
+  //     [12, 13, 14, 5],
+  //     [11, 16, 15, 6],
+  //     [10,  9,  8, 7]]
