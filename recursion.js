@@ -246,7 +246,7 @@ function getPermutations(arr) {
 
   // Memoization --> to speed time complexity with fib 
 
-  function memorize(func) {
+  function memoize(func) {
     const cache = {} // Declare a const variable cache. 
 
     return function(...args) { // rest parameter --> multiple arguments.
@@ -268,5 +268,5 @@ function slowFib(n) {
     return fib(n - 1) + fib(n - 2);
 }
 
-const fib = memorize(slowFib)
+const fib = memoize(slowFib)
   
