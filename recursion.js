@@ -242,4 +242,31 @@ function getPermutations(arr) {
     generate(arr.length, arr.slice()) // invoke function w/ arguments. 
     return output; // RETURN the result of output
   }
+
+
+  // Memoization --> to speed time complexity with fib 
+
+  function memorize(func) {
+    const cache = {} // Declare a const variable cache. 
+
+    return function(...args) { // rest parameter --> multiple arguments.
+        if(cache[args]) { // IF cache has been called 
+            return cache[args] // RETURN that argument.
+        }
+
+        const result = func(...args) // individual calls 
+        cache[args] = result; // Set value to of cache args
+
+        return result; // return result. 
+            
+    }
+}
+
+function slowFib(n) {
+    if(n < 2) return n; 
+
+    return fib(n - 1) + fib(n - 2);
+}
+
+const fib = memorize(slowFib)
   
