@@ -162,3 +162,20 @@ function spliceMethod(arr) {
 }
 const array = ['shark,', 'salmon', 'whale','bear', 'lizard', 'tortoise']
 console.log(spliceMethod(array))
+
+
+
+
+// OBJECTs
+
+// COMPUTED PROPERTIES. 
+const role = 'host';
+const person = 'Jools Holland';
+const role2 = 'Director';
+const person2 = 'James Cameron';
+
+
+const team = {
+    [role]: person,
+    [role2]: person2 
+};
