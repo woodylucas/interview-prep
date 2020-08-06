@@ -179,3 +179,23 @@ const team = {
     [role]: person,
     [role2]: person2 
 };
+
+
+// METHODs to Objects
+
+function addProp(obj, k, v ) {
+    const copy = {
+        ...obj
+    };
+    copy[k] = v;
+    return copy;
+}
+
+const math = {
+    add: function(x, y) {
+        return x + y; 
+    },
+    multiply: function(x, y) {
+        return x * y; 
+    }
+}
