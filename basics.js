@@ -199,3 +199,14 @@ const math = {
         return x * y; 
     }
 }
+
+// Method shorthand 
+const auth = {
+    username: 'TommyBot',
+    login() {
+        console.log('LOGGED IN')
+    }, 
+    logout() {
+        console.log('GOODBYE')
+    }
+}
