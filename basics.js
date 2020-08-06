@@ -210,3 +210,25 @@ const auth = {
         console.log('GOODBYE')
     }
 }
+
+// 'this' Reference to the current execution scope
+
+function sayHi() {
+    console.log("HI");
+    console.log(this); // --> should return an WINDOW object. --> current execution scope. 
+}
+
+const person = {
+    first: 'Jacob',
+    last: 'Sarkisian',
+    nickname: 'Jay'
+    fullName() {
+        // DESTRUCTING 
+        const { first, last, nickname } = this;
+        console.log(`${first} ${last} AKA ${nickname}`)
+    }, 
+    printBio() {
+        const fullName = this.fullName();
+        console.log(`${fullName} is a person.`)
+    }
+}
