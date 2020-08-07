@@ -232,3 +232,4 @@ const person = {
         console.log(`${fullName} is a person.`)
     }
 }
+
