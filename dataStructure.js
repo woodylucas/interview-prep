@@ -52,3 +52,51 @@ const nodeTwo = {
 }
 
 nodeOne.next = nodeTwo;
+
+
+// Singly Linked List --> 
+
+class Node { // Declare a class Node 
+    constructor(val) { // Declare a constructor --> which takes in a val.
+        this.val = val; // Set val to val. 
+        this.next = null; // Set next to null.
+    }
+}
+
+/* INCORRECT WAY 
+
+let first = new Node('Hi');
+first.next = new Node('there');
+first.next.next = new Node('are');
+first.next.next.next = new Node('you');
+
+*/ 
+
+// CORRECT WAY
+// Declare a class Singly Linked List.
+
+class SinglyLinkedList {
+    // Don't initiailzie w/ any data. 
+    constructor() { 
+        // Takes a head, tail, and a length
+        this.head = null; // Beginning of List
+        this.tail = null; // End of List
+        this.length = 0;  // Size of List
+    }
+    // PUSH method INPUT: a val 
+    push(val){
+        const newNode = val// Declare a variable newNode set to val
+        // EDGE CASE 
+
+        // IF there is no HEAD
+        if(!head) {
+            this.head = newNode; // Set head to newNode 
+            this.tail = this.head; // Set tail to head
+        } else { // ELSE 
+            this.tail.next = newNode;// Set the tail w/ next property to the newNode
+            this.tail = newNode; // Update tail to newNode
+        }
+        this.length++; // Increment the length property 
+        return this;  // RETURN list w/ this 
+    }
+}
