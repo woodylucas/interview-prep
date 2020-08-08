@@ -42,3 +42,6 @@ class Stack {
     }
 }
 
+
+// Linked List --> ordered of collection of data. 
+
