@@ -56,11 +56,12 @@ nodeOne.next = nodeTwo;
 
 // Singly Linked List --> 
 
-class Node { // Declare a class Node 
-    constructor(val) { // Declare a constructor --> which takes in a val.
-        this.val = val; // Set val to val. 
-        this.next = null; // Set next to null.
-    }
+// Declare a class instance Node 
+class Node { 
+    constructor (val) { // Declare a constructor function --> which takes in one property 
+        this.val = val; 
+        this.next = null 
+    } 
 }
 
 /* INCORRECT WAY 
@@ -76,27 +77,59 @@ first.next.next.next = new Node('you');
 // Declare a class Singly Linked List.
 
 class SinglyLinkedList {
-    // Don't initiailzie w/ any data. 
-    constructor() { 
-        // Takes a head, tail, and a length
-        this.head = null; // Beginning of List
-        this.tail = null; // End of List
-        this.length = 0;  // Size of List
+    // Declare a constructor --> no properties
+    constructor() {
+        this.head = null; 
+        this.tail = null; 
+        this.length = 0; 
     }
-    // PUSH method INPUT: a val 
-    push(val){
-        const newNode = val// Declare a variable newNode set to val
-        // EDGE CASE 
 
-        // IF there is no HEAD
-        if(!head) {
-            this.head = newNode; // Set head to newNode 
-            this.tail = this.head; // Set tail to head
+    // Declare a push method --> will add a val to the link list. 
+    push(val) {
+        const newNode = new Node(val) // Delcare const variable newNode set to new Node w/ data passed in.
+        if (!this.head) {  // IF there is no head 
+            // NODE is empty
+            this.head = newNode; // Set head to newNode
+            this.tail = this.head; // Set tail to head 
         } else { // ELSE 
-            this.tail.next = newNode;// Set the tail w/ next property to the newNode
-            this.tail = newNode; // Update tail to newNode
+            // NODE exist
+            this.tail.next = newNode; // Set the next tail property to the new Node. 
+            this.tail = newNode; // Reassign the tail property to new Node. 
         }
-        this.length++; // Increment the length property 
-        return this;  // RETURN list w/ this 
+        this.length++// INCREMENT length by 1
+        return this; // RETURN the linked list --> this. 
+
     }
+    // Define a function: pop()
+    pop() {
+        if (!this.head) { // IF there is no head property
+            return null; 
+        }
+        let current = this.head; // Declare a variable current set to head
+        let newTail = current; // Declare a variable newTail set to current 
+
+         while (current.next) { // WHILE current has a next property 
+             newTail = current; // Set newTail to current 
+             current = current.next // Set current to current w/ next property 
+         }
+            this.tail = newTail// Set tail to newTail
+            this.tail.next = null; // Set tail's next property to null
+            this.length--;  // Decrement length by 1
+            if (this.length === 0) {
+                this.head = null;
+                this.tail = null; 
+            }
+            return current; // RETURN current
+    }  
 }
+
+const list = new SinglyLinkedList(); 
+
+console.log(list.push('HELLO'));
+console.log(list.push('GOODBYE'));
+// console.log(list.pop());
+// console.log('RESULT :', list);
+console.log(list.pop());
+console.log('POP:', list)
+
+
