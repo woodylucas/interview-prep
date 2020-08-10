@@ -225,7 +225,35 @@ class SinglyLinkedList {
     this.length--;// Decrement this.length by 1
     return removedNode;// RETURN removedNode
     }
-        
+
+    reverse() {
+        let node = this.head; // Declare variable node set to this.head 
+        this.head = this.tail; // Reassign the this.head variable set to this.tail 
+        this.tail = node; // Reassign this.tail to node
+        let next; // Declare an undefined variable next
+        let prev = null; // Declare a variable prev set to null --> We want the this.tail.next to be NULL
+        // FOR LOOP
+        // Set counter to 0 
+        // Counter breaks when the end of this.length 
+        // Increment counter by 1
+        for (let i = 0; i < this.length; i++) {
+            next = node.next; // Set next to the next property of our node
+            node.next = prev; // Set the next property of node set to prev
+            prev = node; // Set prev to current node
+            next = node; // Set next to current node 
+        }
+        return this; // RETURN list 
+    }
+
+    print() { // --> a method to that basically checks if the link list was reversed.
+        const arr = []; 
+        let current = this.head; 
+        while (current) {
+            arr.push(current.val); 
+            current = current.next;
+        }
+        console.log(arr)
+    }
 }
 
 const list = new SinglyLinkedList(); 
