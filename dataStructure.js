@@ -165,6 +165,16 @@ class SinglyLinkedList {
         }
         return currNode; // RETURN currNode. 
     }
+    // Declare a set method
+    set(index, val) { // INPUT: index, val
+        let node = this.get(index); // Declare a variable node set to this.get method with the index passed in 
+        if (node) { // IF node exist
+            node.val = node; // Set node.val to node 
+            return true; // RETURN true
+        }     
+        return false; // RETURN false
+
+    }
         
 }
 
@@ -183,6 +193,7 @@ console.log(list.push(':)'));
 // console.log('NEW LIST:', list)
 // console.log(list.unshift('ADD ME')); 
 console.log(list.get(100))
+console.log(list.set(2, '!!!!'))
 
 
 
