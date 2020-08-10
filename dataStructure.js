@@ -136,8 +136,24 @@ class SinglyLinkedList {
         return currHead; // RETURN currHead; 
     }
     // Declare a method unshift --> val
-        // IF head does not exist 
-            // RETURN undefined
+    unshift(val) {
+        let newNode = new Node(val); // Declare a variable node set to new Node of val; 
+
+        if (!this.head) { // IF head does not exist 
+            this.head = newNode; // Set this.head to newNode 
+            this.tail = this.head; // Set this.tail to head 
+        } else { // ELSE 
+            newNode.next = this.head; // Set the NEXT newnewNode property to the current head 
+            this.head = newNode; // Set the current head to newNode 
+        }
+        this.length++; // INCREMENT this.length by 1
+        return this; // RETURN the list --> this
+    }
+        
+        
+      
+
+        
         
         
 }
@@ -150,6 +166,9 @@ console.log(list.push('GOODBYE'));
 // console.log('RESULT :', list);
 // console.log(list.pop());
 // console.log('POP:', list)
-console.log('EXTRACT HELLO:', list.shift())
-console.log('NEW LIST:', list)
+// console.log('EXTRACT HELLO:', list.shift())
+// console.log('NEW LIST:', list)
+console.log(list.unshift('ADD ME')); 
+
+
 
