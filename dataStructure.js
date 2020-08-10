@@ -100,10 +100,10 @@ class SinglyLinkedList {
         return this; // RETURN the linked list --> this. 
 
     }
-    // Define a function: pop()
+    // Define a function: pop() --> remove last element from link list.
     pop() {
         if (!this.head) { // IF there is no head property
-            return null; 
+            return undefined; 
         }
         let current = this.head; // Declare a variable current set to head
         let newTail = current; // Declare a variable newTail set to current 
@@ -120,7 +120,18 @@ class SinglyLinkedList {
                 this.tail = null; 
             }
             return current; // RETURN current
-    }  
+    } 
+    
+    shift() { // Define a method shift()
+        if(!this.head) { // IF there is no head 
+            return undefined; // RETURN undefined 
+        }     
+        let currHead = this.head; // Declare a variable currHead set to this.head 
+        this.head = currHead.next; // Reassign this.head to currHead.next
+        this.length--; // Decrement this.length by 1
+        return currHead; // RETURN currHead; 
+    }
+        
 }
 
 const list = new SinglyLinkedList(); 
@@ -129,7 +140,8 @@ console.log(list.push('HELLO'));
 console.log(list.push('GOODBYE'));
 // console.log(list.pop());
 // console.log('RESULT :', list);
-console.log(list.pop());
-console.log('POP:', list)
-
+// console.log(list.pop());
+// console.log('POP:', list)
+console.log('EXTRACT HELLO:', list.shift())
+console.log('NEW LIST:', list)
 
