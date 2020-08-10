@@ -88,7 +88,7 @@ class SinglyLinkedList {
         this.length = 0; 
     }
 
-    // Declare a push method --> will add a val to the link list. 
+    // Declare a push method --> will add a node property to END of the link list. 
     push(val) {
         const newNode = new Node(val) // Declare const variable newNode set to new Node w/ data passed in.
         if (!this.head) {  // IF there is no head 
@@ -97,14 +97,14 @@ class SinglyLinkedList {
             this.tail = this.head; // Set tail to head 
         } else { // ELSE 
             // NODE exist
-            this.tail.next = newNode; // Set the next tail property to the new Node. 
-            this.tail = newNode; // Reassign the tail property to new Node. 
+            this.tail.next = newNode; // Point the tail property to the newNode property w/ this.tail.next --> newNode
+            this.tail = newNode; // Reassign this.tail to the newNode. 
         }
         this.length++// INCREMENT length by 1
         return this; // RETURN the linked list --> this. 
 
     }
-    // Define a function: pop() --> remove last element from link list.
+    // Define a function: pop() --> remove a node property from the END of the link list.
     pop() {
         if (!this.head) { // IF there is no head property
             return null; 
@@ -143,8 +143,8 @@ class SinglyLinkedList {
             this.head = newNode; // Set this.head to newNode 
             this.tail = this.head; // Set this.tail to head 
         } else { // ELSE 
-            newNode.next = this.head; // Set the NEXT newnewNode property to the current head 
-            this.head = newNode; // Set the current head to newNode 
+            newNode.next = this.head; // Point the newNode to the head property newNode -> this.head 
+            this.head = newNode; // Reassign the head to the newNode property
         }
         this.length++; // INCREMENT this.length by 1
         return this; // RETURN the list --> this
@@ -173,7 +173,6 @@ class SinglyLinkedList {
             return true; // RETURN true
         }     
         return false; // RETURN false
-
     }
         
 }
