@@ -174,6 +174,41 @@ class SinglyLinkedList {
         }     
         return false; // RETURN false
     }
+
+    // Declare method insert --> index, value 
+    insert(index, value) {
+
+        // IF index less than 0 OR index GREATER than this.length 
+         if (index < 0 || index > this.length) {
+            return false; // RETURN false 
+         }
+
+        // IF index is this.length 
+        if (index === this.length) {
+            return !!this.push(val) // PUSH newNode to end of list (!! coerces to a boolean property)
+        }
+           
+        // IF index is 0 
+        if (index == 0) {
+            return !!this.unshift(val) // UNSHIFT newNode --> place newNode in the beginning of list  (!! coerces to a boolean property)
+        }
+
+        let newNode = new Node(val) // Declare a variable newNode set to new Node w/ val passed in
+        let previousNode = this.get(index - 1); // Declare a variable previousNode set to get method index - 1 --> so we obtain the method before the postion of insertion 
+        let temp = previousNode.next; // Declare a variable temp set to the property of the previous node
+        previousNode.next = newNode;// Set next property of previousNode to newNode  
+        newNode.next = temp; // Set the next property of newNode to temp
+        // Increment this.length by 1 
+        // RETURN true 
+    }
+
+    // REMOVE method 
+    remove(index) {
+        // IF index is less than 0 OR greater than length 
+            // RETURN null 
+        // IF index is this.length - 1 
+            // USE pop method to remove last node property. 
+    }
         
 }
 
