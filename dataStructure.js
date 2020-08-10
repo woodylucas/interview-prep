@@ -107,7 +107,7 @@ class SinglyLinkedList {
     // Define a function: pop() --> remove last element from link list.
     pop() {
         if (!this.head) { // IF there is no head property
-            return undefined; 
+            return null; 
         }
         let current = this.head; // Declare a variable current set to head
         let newTail = current; // Declare a variable newTail set to current 
@@ -128,7 +128,7 @@ class SinglyLinkedList {
     
     shift() { // Define a method shift()
         if(!this.head) { // IF there is no head 
-            return undefined; // RETURN undefined 
+            return null; // RETURN null 
         }     
         let currHead = this.head; // Declare a variable currHead set to this.head 
         this.head = currHead.next; // Reassign this.head to currHead.next
@@ -149,12 +149,22 @@ class SinglyLinkedList {
         this.length++; // INCREMENT this.length by 1
         return this; // RETURN the list --> this
     }
-        
-        
-      
 
-        
-        
+    // Declare a method --> get() INPUT: index 
+    get(index) {
+        // IF index is less than 0 OR index is GREATER than or equal to this.length 
+        if (index < 0 || index >= this.length) {
+            return null;  // RETURN null 
+        }
+        let currNode = this.head; // Declare a variable node set to this.head
+        let counter = 0; // Declare a variable counter set to 0 
+        // WHILE counter doesn't equal to index 
+        while (counter !== index) {
+            currNode = currNode.next; // Reassign the currNode to the next Node 
+            counter++; // Increment counter by 1 until the while loop condition is false
+        }
+        return currNode; // RETURN currNode. 
+    }
         
 }
 
@@ -162,13 +172,17 @@ const list = new SinglyLinkedList();
 
 console.log(list.push('HELLO'));
 console.log(list.push('GOODBYE'));
+console.log(list.push('!')); 
+console.log(list.push('<3'));
+console.log(list.push(':)'));
 // console.log(list.pop());
 // console.log('RESULT :', list);
 // console.log(list.pop());
 // console.log('POP:', list)
 // console.log('EXTRACT HELLO:', list.shift())
 // console.log('NEW LIST:', list)
-console.log(list.unshift('ADD ME')); 
+// console.log(list.unshift('ADD ME')); 
+console.log(list.get(100))
 
 
 
