@@ -185,15 +185,15 @@ class SinglyLinkedList {
 
         // IF index is this.length 
         if (index === this.length) {
-            return !!this.push(val) // PUSH newNode to end of list (!! coerces to a boolean property)
+            return !!this.push(val); // PUSH newNode to end of list (!! coerces to a boolean property)
         }
            
         // IF index is 0 
         if (index == 0) {
-            return !!this.unshift(val) // UNSHIFT newNode --> place newNode in the beginning of list  (!! coerces to a boolean property)
+            return !!this.unshift(val); // UNSHIFT newNode --> place newNode in the beginning of list  (!! coerces to a boolean property)
         }
 
-        let newNode = new Node(val) // Declare a variable newNode set to new Node w/ val passed in
+        let newNode = new Node(val); // Declare a variable newNode set to new Node w/ val passed in
         let previousNode = this.get(index - 1); // Declare a variable previousNode set to get method index - 1 --> so we obtain the method before the postion of insertion 
         let temp = previousNode.next; // Declare a variable temp set to the property of the previous node
         previousNode.next = newNode;// Set next property of previousNode to newNode  
@@ -204,10 +204,26 @@ class SinglyLinkedList {
 
     // REMOVE method 
     remove(index) {
-        // IF index is less than 0 OR greater than length 
-            // RETURN null 
-        // IF index is this.length - 1 
-            // USE pop method to remove last node property. 
+    // EDGE cases: 
+    // IF index is a negative number OR IF the index is GREATER than or equal to this.length 
+    if (index < 0 || index >= this.length) {
+        return null; // RETURN null
+    }
+        
+    // IF index is the same as the last # of the length in the list 
+    if (index === this.length - 1) {
+        return this.pop(); // RETURN this.pop --> which removes the last list item 
+    }
+    // IF index is 0 --> which is first element in the list 
+    if (index === 0) {
+        return this.shift(); // RETURN this.shift() --> which removes the first
+    }
+
+    let previousNode = get(index - 1); // Declare a variable previousNode set to get method index - 1 --> the index before the index
+    let removedNode = previousNode.next;// Declare a variable removedNode set to previousNode w/ next property 
+    previousNode.next = removedNode.next;// Set the previousNode next property to the removedNode next property 
+    this.length--;// Decrement this.length by 1
+    return removedNode;// RETURN removedNode
     }
         
 }
@@ -226,8 +242,10 @@ console.log(list.push(':)'));
 // console.log('EXTRACT HELLO:', list.shift())
 // console.log('NEW LIST:', list)
 // console.log(list.unshift('ADD ME')); 
-console.log(list.get(100))
-console.log(list.set(2, '!!!!'))
+// console.log(list.get(100))
+// console.log(list.set(2, '!!!!'))
+console.log(list.remove(0))
+console.log(list)
 
 
 
