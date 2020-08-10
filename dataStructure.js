@@ -1,16 +1,20 @@
 // Queues from scatch.
 
-class Queue {
+class Queue { // FIFO --> 
     constructor(){
-        this.data = []; a 
+        this.data = []; // Declare a instance data set to a storage 
     }
-    add(record) {
-        this.data.unshift(record)
+    add(record) { // Declare a method add --> INPUT ---> record 
+        this.data.unshift(record) // Add the record to the beginning of the Queue 
     }
 
-    remove() {
-        return this.data.pop()
+    remove() { 
+        return this.data.pop() // REMOVES last element --> in this instance it's the first record passed in
     }
+
+    peek() {
+        this.data[this.data.length -1]; // Search queue 
+    } 
 }
 
 // STACK
@@ -27,18 +31,18 @@ class Queue {
 //   s.pop(); // returns 2
 //   s.pop(); // returns 1
 
-class Stack {
+class Stack { // FILO --> First In Last Out 
     constructor() {
-        this.data = [];
+        this.data = []; // Declare a storage 
     }
     push(record) {
-        this.data.push(record);
+        this.data.push(record); // PUSH record in to stack 
     }
-    pop(){
-        return this.data.pop();
+    pop() {
+        return this.data.pop(); // REMOVE the last record 
     }
-    peek(){
-        return this.data[this.data.length - 1];
+    peek() {
+        return this.data[this.data.length - 1]; // Search stack 
     }
 }
 
@@ -58,7 +62,7 @@ nodeOne.next = nodeTwo;
 
 // Declare a class instance Node 
 class Node { 
-    constructor (val) { // Declare a constructor function --> which takes in one property 
+    constructor(val) { // Declare a constructor function --> which takes in one property 
         this.val = val; 
         this.next = null 
     } 
@@ -86,7 +90,7 @@ class SinglyLinkedList {
 
     // Declare a push method --> will add a val to the link list. 
     push(val) {
-        const newNode = new Node(val) // Delcare const variable newNode set to new Node w/ data passed in.
+        const newNode = new Node(val) // Declare const variable newNode set to new Node w/ data passed in.
         if (!this.head) {  // IF there is no head 
             // NODE is empty
             this.head = newNode; // Set head to newNode
@@ -131,6 +135,10 @@ class SinglyLinkedList {
         this.length--; // Decrement this.length by 1
         return currHead; // RETURN currHead; 
     }
+    // Declare a method unshift --> val
+        // IF head does not exist 
+            // RETURN undefined
+        
         
 }
 
