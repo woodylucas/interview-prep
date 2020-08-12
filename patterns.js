@@ -584,3 +584,54 @@ function matrix(n) {
   //     [12, 13, 14, 5],
   //     [11, 16, 15, 6],
   //     [10,  9,  8, 7]]
+
+
+  // Write a function that accepts an array and a value 
+  // LOOP through the array and find the index of the value 
+  function search(arr, val) {
+      let output; 
+      for(const elem of arr) {
+          if (elem !== val) {
+              output = -1 
+          } else {
+              return arr.indexOf(elem); 
+          }
+      }
+      return output; 
+  }
+
+  const linearArr = [10, 15, 20, 25, 30]; 
+//   console.log(search(linearArr, 9))
+
+
+  function binarySearch(arr, val){
+  
+    let left = 0; // Declare a variable left set to 0 --> beginning of the array
+    
+    let right = arr.length - 1; // Declare a variable right set to the end of the array 
+    
+    while (left < right) { // WHILE left is less than right 
+    
+        const midpoint = Math.floor(arr.length / 2);  // Declare a const variable midpoint --> the array length divided by 2 ROUND DOWN!
+        
+        if (val === arr[midpoint]) { // IF val is the midpoint 
+        
+            return midpoint; // RETURN midpoint
+             
+        } else if (val < midpoint) { // ELSE IF val is less than midpoint 
+        
+            // VALUE is smaller 
+            if (arr[left] === val)  return left; 
+            left++; // Increment left by 1 
+             
+        } else { // ELSE 
+            // VALUE IS LARGER
+            if (arr[right] === val)  return right; 
+            right--;// Decrement right by 1
+            
+        }
+    }
+       return - 1; // RETURN -1 if the condition isn't met
+  }
+
+  console.log(binarySearch([1,2,3,4,5], 5))
