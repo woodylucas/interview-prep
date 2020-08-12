@@ -609,29 +609,22 @@ function matrix(n) {
     let left = 0; // Declare a variable left set to 0 --> beginning of the array
     
     let right = arr.length - 1; // Declare a variable right set to the end of the array 
+
+    let midpoint = Math.floor((left + right) / 2);  // Declare a varible midpoint --> which take the middle postion
     
-    while (left < right) { // WHILE left is less than right 
+    while (arr[midpoint] !== val && left <= right) { // While the midpoint is not the same as the val and left is less than or equal to right
     
-        const midpoint = Math.floor(arr.length / 2);  // Declare a const variable midpoint --> the array length divided by 2 ROUND DOWN!
-        
-        if (val === arr[midpoint]) { // IF val is the midpoint 
-        
-            return midpoint; // RETURN midpoint
-             
-        } else if (val < midpoint) { // ELSE IF val is less than midpoint 
-        
-            // VALUE is smaller 
-            if (arr[left] === val)  return left; 
-            left++; // Increment left by 1 
-             
+        if (val < arr[midpoint]) { // IF val is the less than midpoint
+            right = midpoint - 1; // Reassign right to that the postion after the midpoint to establish a new window -->  midpoint - 1; 
         } else { // ELSE 
-            // VALUE IS LARGER
-            if (arr[right] === val)  return right; 
-            right--;// Decrement right by 1
-            
+            // VALUE is greater than midpoint
+            left = midpoint + 1; // Reassign left to take the postion ahead of the midpoint to create a new window --> midpoint +1   
         }
+        midpoint = Math.floor((left + right) / 2);  // Retrieve a new middle postion --> which takes a new position. 
     }
-       return - 1; // RETURN -1 if the condition isn't met
+
+    // IF the element at the midpoint is val RETURN the index else return -1 
+    return arr[midpoint] === val ? midpoint : - 1;
   }
 
-  console.log(binarySearch([1,2,3,4,5], 5))
+  console.log(binarySearch([1,2,3,4,5], 500))
