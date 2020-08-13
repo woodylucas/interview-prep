@@ -696,4 +696,36 @@ function twoSum(nums, target) {
 // console.log(twoSum([3, 2, 4], 6)); // --> [1, 2] 
 
 
+function twoSumSorted(numbers, target) {
+    // Create two pointers 
+    let start = 0; // Declare a variable start set to 0 
+    let end = numbers.length - 1; // Declare a variable end set to the end of the array
+
+    // WHILE LOOP iterate until a certain condition is met --> IF start is less than end
+    while (start < end) {
+
+        let sum = numbers[start] + numbers[end];  // Declare a variable sum set to the elements of the two pointer postions
+        if (sum === target) { // IF the sum if the two pointers is the same value as target 
+            return [start, end] // RETURN the two pointers in an array 
+         // ELSE if the sum less than target 
+
+        } else if (sum < target) { 
+            start++; // Increment the start pointer to the right
+
+         // ELSE if sum is more than target 
+        } else {
+            end--;  // Decrement the end pointer to the left
+        }
+    }
+        
+        
+            
+        
+           
+        
+           
+}
+
+console.log(twoSumSorted([2,7,11,15], 9)); 
+
 
