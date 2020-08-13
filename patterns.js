@@ -632,8 +632,8 @@ function matrix(n) {
 
 function merge(arr1, arr2) {
     const results = [];// Declare a const variable results set to an empty array
-    let i = 0; // arr1 pointer 
-    let j = 0; // arr2 pointer 
+    let i = 0; // arr1 pointer --> i 
+    let j = 0; // arr2 pointer --> j
     while (i < arr1.length && j < arr2.length) {
         // IF the elements in the second array is GREATER than the first array
         if (arr2[j] > arr1[i]) {
@@ -667,5 +667,33 @@ function mergeSort(arr) {
     return merge(left, right); 
 }
 
-console.log(mergeSort([10, 24, 76, 73, 72, 1, 9]))
+// console.log(mergeSort([10, 24, 76, 73, 72, 1, 9]))
+
+
+function twoSum(nums, target) {
+    const lookup = {}; // Declare a const variable lookup set to an empty object --> to store the key as the element in the array and the index as its value 
+    
+    // FOR LOOP: 
+    // Set counter to 0
+    // Break when counter reaches end of array
+    // Increment by 1 
+    for (let i = 0; i < nums.length; i++) {
+        let currDiff = target - nums[i] // Declare a varible difference that will be target - currElem --> the difference is the element we are looking for
+        // EDGE CASE: 
+
+        // IF the value isn't undefined and its not the same index 
+        if (lookup[currDiff] !== undefined && lookup[currDiff] !== i) {
+            console.log('LOOKUP:', lookup)
+            return [lookup[currDiff], i]; // Return that value, and index 
+        } else {
+            lookup[nums[i]] = i;
+        }
+    }
+}
+// console.log(twoSum([2,7,11,15],9)); // --> [0, 1]
+// console.log(twoSum([3,2,3], 6)) // --> [0, 2]
+// console.log(twoSum([2,5,5,11],10)); // ---> undefined 
+// console.log(twoSum([3, 2, 4], 6)); // --> [1, 2] 
+
+
 
