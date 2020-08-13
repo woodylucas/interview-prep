@@ -627,4 +627,45 @@ function matrix(n) {
     return arr[midpoint] === val ? midpoint : - 1;
   }
 
-  console.log(binarySearch([1,2,3,4,5], 500))
+//   console.log(binarySearch([1,2,3,4,5], 500))
+
+
+function merge(arr1, arr2) {
+    const results = [];// Declare a const variable results set to an empty array
+    let i = 0; // arr1 pointer 
+    let j = 0; // arr2 pointer 
+    while (i < arr1.length && j < arr2.length) {
+        // IF the elements in the second array is GREATER than the first array
+        if (arr2[j] > arr1[i]) {
+            results.push(arr1[i]); // PUSH the smallest element into the results array 
+            i++;// Increment i by 1 --> to move up one if condition is true
+        } else {
+            results.push(arr2[j]);
+            j++; // Increment j by 1
+        }  
+    }
+    while (i < arr1.length) {
+        results.push(arr1[i]); 
+        i++; 
+    }
+    while (j < arr2.length) {
+        results.push(arr2[j]); 
+        j++; 
+    }
+    return results; 
+}
+
+// console.log(merge([1,10,50], [2,14,99,100]));
+
+
+function mergeSort(arr) {
+    // BASE CASE: 
+    if (arr.length <= 1) return arr;
+    let midpoint = Math.floor(arr.length / 2); 
+    const left = mergeSort(arr.slice(0, midpoint));
+    const right = mergeSort(arr.slice(midpoint));
+    return merge(left, right); 
+}
+
+console.log(mergeSort([10, 24, 76, 73, 72, 1, 9]))
+
