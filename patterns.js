@@ -717,15 +717,76 @@ function twoSumSorted(numbers, target) {
             end--;  // Decrement the end pointer to the left
         }
     }
-        
-        
-            
-        
-           
-        
-           
+
 }
 
-console.log(twoSumSorted([2,7,11,15], 9)); 
+// console.log(twoSumSorted([2,7,11,15], 9)); 
 
 
+function maxSlidingWindow(nums, k) {
+    let maxSum = -Infinity // Declare a variable maxSum set to -Infinity 
+    let tempSum = 0; // Declare a variable tempSum set to 0 
+    const result = []
+    // EDGE CASE: 
+    // IF the length of num is less than k RETURN null 
+    if (nums.length < k) return null; 
+    
+   
+    
+    // FOR LOOP: iterates to add up the first 3 values in the array and store it into max sum 
+    // Set counter to 0
+    // Break when counter reaches --> k 
+    // Increment counter by 1
+    
+    for(let i = 0; i < k; i++) {
+        tempSum += nums[i]; 
+    }
+
+    maxSum = Math.max(tempSum, maxSum); // Reassign the value of maxSum into tempSum
+    
+    // FOR LOOP --> which will iterate through the nums starting from the k 
+    // Set a counter to k 
+    // Break when counter reaches the end of nums array 
+    // Increment counter by 1
+    for (let i = k; i < nums.length; i++) {
+        tempSum = tempSum  - nums[i - k]  + nums[i]; // REASSIGN tempSum to tempSum - the element at the index - k + the next element 
+        maxSum = Math.max(tempSum, maxSum); // REASSIGN maxSum to the value greater value between the two --> tempSum, maxSum
+        result.push(maxSum)
+    }
+       
+    return result; // RETURN maxSum
+};
+
+console.log(maxSlidingWindow([1,3,-1,-3,5,3,6,7], 3))
+
+function findMaxAverage(nums, k) {
+    //EDGE CASE: 
+    // IF the size of the array is less than k return null 
+    if (nums.length < k) return null
+
+    let maxAverage = -Infinity; // Declare a variable maxAverage set to 0 
+    let tempAverage = 0; // Declare a variable tempAverage set to 0
+
+    // FOR LOOP --> iterates an average amount of the first k amount items in the array 
+    // Set counter to 0 
+    // Break when counter reaches k 
+    // Increment counter by 1 
+    for (let i = 0; i < k; i++)  {
+        tempAverage += nums[i]// Total up the sum of the first k elements in nums array
+    }
+    maxAverage = Math.max(tempAverage / k, maxAverage) // Reassign tempSum to maxAverage 
+
+    // FOR LOOP --> itearates through nums array 
+    // Set counter to k --> we have the first k elements stored so negated the first k elements 
+    // Break when counter reaches the end of the array 
+    // Increment by 1 
+    for (let i = k; i < nums.length; i++) {
+        tempAverage = tempAverage - nums[i - k] + nums[i]; // Reassign temp and set a new temp sum by adding the existing element and subtracting the the first element 
+        maxAverage = Math.max(tempAverage / k, maxAverage) // Set maxAverage to the max average of tempAverage and maxAverage 
+    }
+    return maxAverage; // RETURN maxAverage
+
+};
+
+// console.log(findMaxAverage([1,12,-5,-6,50,3], 4) )
+                            
