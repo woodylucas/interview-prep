@@ -651,7 +651,7 @@ function searchInsert(nums, target) {
     return left; 
 };
 
-console.log(searchInsert([1,3,5,6], 6))
+// console.log(searchInsert([1,3,5,6], 6))
 
 
 const searchBinary = function(nums, target) {
@@ -677,7 +677,34 @@ const searchBinary = function(nums, target) {
     
 }
 
-console.log(binarySearch([-1,0,3,5,9,12], 9))
+// console.log(binarySearch([-1,0,3,5,9,12], 9))
+
+function bubbleSort(arr) {
+    // Declare a functional expression set to swap  function 
+    // INPUT: arr, idx1, idx2 
+    const swap = (arr, idx1, idx2) => {
+        [ arr[idx1], arr[idx2] ] = [ arr[idx2], arr[idx1] ]
+    }
+    
+    // FOR LOOP Iterate from the end of array towards the beginning 
+    // Set counter to the arrays length --> which is the end of the array 
+    // Break when counter reaches the  beginning of the array  
+    // Decrement by 1
+    for (let i = arr.length; i > 0; i--) {
+        // FOR LOOP 
+        // Set counter to the 0
+        // Break when reaches one element minus j 
+        // increment by 1 
+        for (let j = 0; j < i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                swap(arr, j, j + 1); 
+            }
+        }
+    }
+    return arr; 
+}
+
+console.log(bubbleSort([37, 45, 29, 8, 12, 88, -3]))
 
 
 function merge(arr1, arr2) {
