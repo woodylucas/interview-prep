@@ -630,6 +630,30 @@ function matrix(n) {
 //   console.log(binarySearch([1,2,3,4,5], 500))
 
 
+function searchInsert(nums, target) {
+    let left = 0; 
+    let right = nums.length - 1; 
+    
+    if(nums.length === 0) return 0; 
+    
+    if(nums[right] < target) return right + 1;
+    
+    while (left <= right) {
+        let midpoint = Math.floor( (left + right) / 2)
+        if (target === nums[midpoint]) {
+            return midpoint
+        } else if (target > nums[midpoint]) {
+            left = midpoint + 1;   
+        } else {
+            right = midpoint - 1; 
+        }
+    }
+    return left; 
+};
+
+console.log(searchInsert([1,3,5,6], 6))
+
+
 function merge(arr1, arr2) {
     const results = [];// Declare a const variable results set to an empty array
     let i = 0; // arr1 pointer --> i 
@@ -757,7 +781,7 @@ function maxSlidingWindow(nums, k) {
     return result; // RETURN maxSum
 };
 
-console.log(maxSlidingWindow([1,3,-1,-3,5,3,6,7], 3))
+// console.log(maxSlidingWindow([1,3,-1,-3,5,3,6,7], 3))
 
 function findMaxAverage(nums, k) {
     //EDGE CASE: 
@@ -790,3 +814,4 @@ function findMaxAverage(nums, k) {
 
 // console.log(findMaxAverage([1,12,-5,-6,50,3], 4) )
                             
+
