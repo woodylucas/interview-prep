@@ -709,7 +709,38 @@ function bubbleSort(arr) {
     return arr; 
 }
 
-console.log(bubbleSort([37, 45, 29, 8, 12, 88, -3]))
+// console.log(bubbleSort([37, 45, 29, 8, 12, 88, -3]))
+
+function selectionSort(arr) {
+    // SWAP function 
+    const swap = (arr, idx1, idx2) => {
+        const temp = arr[idx1]; 
+        arr[idx1] = arr[idx2]; 
+        arr[idx2] = temp; 
+    }
+    // FOR LOOP:
+    // Set counter to 0 
+    // Break when counter reaches the end of array 
+    // Increment counter by 1 
+    for (let i = 0; i < arr.length; i++) {
+        let lowest = i; // Declare a variable lowest set to i
+        // FOR LOOP 
+        // Set counter to i + 1 
+        // Break when counter reaches the end of array 
+        // Increment by 1 
+        for (let j = i + 1; j < arr.length; j++) {
+            // IF the lowest is greater than the next element 
+            if (arr[lowest] > arr[j]) {
+                lowest = j;  // Set lowest to the min index
+            }
+            // IF the index isn't the same as lowest then SWAP
+            if (i !== lowest) swap(arr, i, lowest)
+        }
+    }
+    return arr; // RETURN arr 
+}
+
+console.log(selectionSort([0,2,34,22,10,19,17], ))
 
 
 function merge(arr1, arr2) {
