@@ -654,6 +654,32 @@ function searchInsert(nums, target) {
 console.log(searchInsert([1,3,5,6], 6))
 
 
+const searchBinary = function(nums, target) {
+    let left = 0; // Declare a pointer to the left 
+    let right = nums.length - 1; // Declare a pointer to the right 
+   
+    
+    // While the middle is element is not the same as target and left is less than or equal to right 
+    while (left <= right) {
+         let midpoint = Math.floor((left + right) / 2); // Declare a middle postion 
+        // IF the value --> target is MORE than mid element;
+        if (target > nums[midpoint]) {
+            left = midpoint + 1;  // Slide the left pointer one index AHEAD of the mid 
+        // IF value is LESS than midpoint element 
+        } else if(target < nums[midpoint]) {
+             right = midpoint - 1; // Slide the right pointer one index less than the mid 
+        // IF midpoint is the same value as target 
+        } else {
+            return midpoint // RETURN mid index
+        }
+    }
+    return - 1 //  otherwise RETURN - 1 
+    
+}
+
+console.log(binarySearch([-1,0,3,5,9,12], 9))
+
+
 function merge(arr1, arr2) {
     const results = [];// Declare a const variable results set to an empty array
     let i = 0; // arr1 pointer --> i 
