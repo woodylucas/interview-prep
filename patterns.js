@@ -827,7 +827,53 @@ const sortArray = (nums) => {
     return merged(left, right); 
 }
 
-console.log(sortArray([5,2,3,1,0]))
+// console.log(sortArray([5,2,3,1,0]))
+
+// QUICK SORT 
+function pivot(arr, start = 0, end = arr.length - 1) {
+    // SWAP function 
+    const swap = (arr, idx1, idx2) => [ arr[idx1], arr[idx2] ] = [ arr[idx2], arr[idx1] ]; 
+
+    let pivot = arr[start]; // Pivot element will be the first element
+    let swapIdx = start;  // Where the frist element is going to be swapped at the end
+
+    // FOR LOOP: iterate array at every element after the first element 
+    // Set counter to start + 1 so an element after first index 
+    // Break when counter reaches the end of the array 
+    // Increment counter by 1 
+    for (let i = start + 1; i < arr.length; i++) {
+        // IF the pivot element is greater than the next element
+        if (pivot > arr[i]) {
+            swapIdx++; // To move the element up by 1
+            // SWAP the element with the 
+            swap(arr, swapIdx, i); 
+        }
+    }
+    swap(arr, start, swapIdx); // Swap the start with the swapIdx
+    return swapIdx; // RETURN idx 
+}
+
+// console.log(pivot([4,8,2,1,5,7,6,3]));
+
+function quickSort(arr, left = 0, right = arr.length - 1) {
+    if(left < right) {
+        let pivotIndex = pivot(arr, left, right); 
+        // LEFT side 
+        quickSort(arr, left, pivotIndex - 1);
+        // RIGHT side 
+        quickSort(arr, pivotIndex + 1, right)
+    }
+    return arr; 
+   
+}
+
+console.log(quickSort([4,6,9,1,2,5,3])); 
+
+
+
+
+
+
 
 
 function twoSum(nums, target) {
