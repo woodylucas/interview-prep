@@ -740,7 +740,20 @@ function selectionSort(arr) {
     return arr; // RETURN arr 
 }
 
-console.log(selectionSort([0,2,34,22,10,19,17], ))
+// console.log(selectionSort([0,2,34,22,10,19,17], ))
+
+function insertionSort(arr) {
+    for (var i = 1; i < arr.length; i++) {
+        var currVal = arr[i];
+        for (var j = i - 1; j >= 0 && arr[j] > currVal; j--) {
+            arr[j + 1] = arr[j];
+        }
+        arr[j + 1] = currVal
+        
+    }
+    return arr; // RETURN array 
+}
+// console.log(insertionSort([2,1,9,76,4]))
 
 
 function merge(arr1, arr2) {
@@ -780,7 +793,41 @@ function mergeSort(arr) {
     return merge(left, right); 
 }
 
-// console.log(mergeSort([10, 24, 76, 73, 72, 1, 9]))
+// console.log(mergeSort([5,2,3,1,0]))
+const merged = (arr1, arr2) => {
+    const results = []; 
+    let i = 0;
+    let j = 0; 
+    while(i < arr1.length && j < arr2.length) {
+        if(arr2[j] > arr1[i]) {
+            results.push(arr1[i]);
+            i++;
+        } else {
+            results.push(arr2[j]); 
+            j++; 
+        }
+    } 
+    while (i < arr1.length) {
+        results.push(arr1[i]);
+        i++;
+    }
+    
+    while(j < arr2.length) {
+        results.push(arr2[j])
+        j++;
+    }
+    return results; 
+}
+const sortArray = (nums) => {
+    // BASE CASE: 
+    if (nums.length <= 1) return nums; 
+    let midpoint = Math.floor(nums.length / 2); 
+    const left = sortArray(nums.slice(0, midpoint));
+    const right = sortArray(nums.slice(midpoint));
+    return merged(left, right); 
+}
+
+console.log(sortArray([5,2,3,1,0]))
 
 
 function twoSum(nums, target) {
