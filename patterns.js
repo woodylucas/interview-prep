@@ -597,7 +597,7 @@ function matrix(n) {
   }
 
   const linearArr = [10, 15, 20, 25, 30]; 
-  console.log(search(linearArr, 30))
+//   console.log(search(linearArr, 30))
 
 
   function binarySearch(arr, val){
@@ -673,7 +673,96 @@ const searchBinary = function(nums, target) {
     
 }
 
-// console.log(binarySearch([-1,0,3,5,9,12], 9))
+// console.log(binarySearch([-1,0,3,5,9,12], 9)
+
+
+
+function twoSum(nums, target) {
+    const lookup = {}; // Declare a const variable lookup set to an empty object --> to store the key as the element in the array and the index as its value 
+    
+    // FOR LOOP: 
+    // Set counter to 0
+    // Break when counter reaches end of array
+    // Increment by 1 
+    for (let i = 0; i < nums.length; i++) {
+        let currDiff = target - nums[i] // Declare a varible difference that will be target - currElem --> the difference is the element we are looking for
+        // EDGE CASE: 
+
+        // IF the value isn't undefined and its not the same index 
+        if (lookup[currDiff] !== undefined && lookup[currDiff] !== i) {
+            console.log('LOOKUP:', lookup)
+            return [lookup[currDiff], i]; // Return that value, and index 
+        } else {
+            lookup[nums[i]] = i;
+        }
+    }
+}
+// console.log(twoSum([2,7,11,15],9)); // --> [0, 1]
+// console.log(twoSum([3,2,3], 6)) // --> [0, 2]
+// console.log(twoSum([2,5,5,11],10)); // ---> undefined 
+// console.log(twoSum([3, 2, 4], 6)); // --> [1, 2] 
+
+
+function twoSumSorted(numbers, target) {
+    // Create two pointers 
+    let start = 0; // Declare a variable start set to 0 
+    let end = numbers.length - 1; // Declare a variable end set to the end of the array
+
+    // WHILE LOOP iterate until a certain condition is met --> IF start is less than end
+    while (start < end) {
+
+        let sum = numbers[start] + numbers[end];  // Declare a variable sum set to the elements of the two pointer postions
+        if (sum === target) { // IF the sum if the two pointers is the same value as target 
+            return [start, end] // RETURN the two pointers in an array 
+         // ELSE if the sum less than target 
+
+        } else if (sum < target) { 
+            start++; // Increment the start pointer to the right
+
+         // ELSE if sum is more than target 
+        } else {
+            end--;  // Decrement the end pointer to the left
+        }
+    }
+
+}
+
+// console.log(twoSumSorted([2,7,11,15], 9)); 
+
+
+
+function findMaxAverage(nums, k) {
+    //EDGE CASE: 
+    // IF the size of the array is less than k return null 
+    if (nums.length < k) return null
+
+    let maxAverage = -Infinity; // Declare a variable maxAverage set to 0 
+    let tempAverage = 0; // Declare a variable tempAverage set to 0
+
+    // FOR LOOP --> iterates an average amount of the first k amount items in the array 
+    // Set counter to 0 
+    // Break when counter reaches k 
+    // Increment counter by 1 
+    for (let i = 0; i < k; i++)  {
+        tempAverage += nums[i]// Total up the sum of the first k elements in nums array
+    }
+    maxAverage = Math.max(tempAverage / k, maxAverage) // Reassign tempSum to maxAverage 
+
+    // FOR LOOP --> itearates through nums array 
+    // Set counter to k --> we have the first k elements stored so negated the first k elements 
+    // Break when counter reaches the end of the array 
+    // Increment by 1 
+    for (let i = k; i < nums.length; i++) {
+        tempAverage = tempAverage - nums[i - k] + nums[i]; // Reassign temp and set a new temp sum by adding the existing element and subtracting the the first element 
+        maxAverage = Math.max(tempAverage / k, maxAverage) // Set maxAverage to the max average of tempAverage and maxAverage 
+    }
+    return maxAverage; // RETURN maxAverage
+
+};
+
+// console.log(findMaxAverage([1,12,-5,-6,50,3], 4) )
+
+// SORTING ALGORITHMS 
 
 function bubbleSort(arr) {
     // Declare a variable noSwap set to undefined --> used to check if a swap occured 
@@ -865,93 +954,49 @@ function quickSort(arr, left = 0, right = arr.length - 1) {
 
 // console.log(quickSort([4,6,9,1,2,5,3])); 
 
+// RADIX SORT 
 
+function getDigit(num, i) {
+    return Math.floor( Math.abs(num) / Math.pow(10, i) ) % 10; 
+}
 
+function digitCount(num) {
+    if (num === 0) return 1; 
+    return Math.floor(Math.log10(Math.abs(num))) + 1; 
+}
 
-
-function twoSum(nums, target) {
-    const lookup = {}; // Declare a const variable lookup set to an empty object --> to store the key as the element in the array and the index as its value 
-    
-    // FOR LOOP: 
-    // Set counter to 0
-    // Break when counter reaches end of array
-    // Increment by 1 
+function mostDigits(nums) {
+    let maxDigits = 0; 
     for (let i = 0; i < nums.length; i++) {
-        let currDiff = target - nums[i] // Declare a varible difference that will be target - currElem --> the difference is the element we are looking for
-        // EDGE CASE: 
-
-        // IF the value isn't undefined and its not the same index 
-        if (lookup[currDiff] !== undefined && lookup[currDiff] !== i) {
-            console.log('LOOKUP:', lookup)
-            return [lookup[currDiff], i]; // Return that value, and index 
-        } else {
-            lookup[nums[i]] = i;
-        }
+        maxDigits = Math.max(maxDigits, digitCount(nums[i]));
     }
-}
-// console.log(twoSum([2,7,11,15],9)); // --> [0, 1]
-// console.log(twoSum([3,2,3], 6)) // --> [0, 2]
-// console.log(twoSum([2,5,5,11],10)); // ---> undefined 
-// console.log(twoSum([3, 2, 4], 6)); // --> [1, 2] 
-
-
-function twoSumSorted(numbers, target) {
-    // Create two pointers 
-    let start = 0; // Declare a variable start set to 0 
-    let end = numbers.length - 1; // Declare a variable end set to the end of the array
-
-    // WHILE LOOP iterate until a certain condition is met --> IF start is less than end
-    while (start < end) {
-
-        let sum = numbers[start] + numbers[end];  // Declare a variable sum set to the elements of the two pointer postions
-        if (sum === target) { // IF the sum if the two pointers is the same value as target 
-            return [start, end] // RETURN the two pointers in an array 
-         // ELSE if the sum less than target 
-
-        } else if (sum < target) { 
-            start++; // Increment the start pointer to the right
-
-         // ELSE if sum is more than target 
-        } else {
-            end--;  // Decrement the end pointer to the left
-        }
-    }
-
+    return maxDigits; 
 }
 
-// console.log(twoSumSorted([2,7,11,15], 9)); 
+// Define a function radix sort INPUT: a list of numbers 
+function radixSort(nums) {
+    let maxDigitCount = mostDigits(nums); // Declare a variable maxDigitCount set to the method mostDigits w/ nums invoked 
 
-
-
-function findMaxAverage(nums, k) {
-    //EDGE CASE: 
-    // IF the size of the array is less than k return null 
-    if (nums.length < k) return null
-
-    let maxAverage = -Infinity; // Declare a variable maxAverage set to 0 
-    let tempAverage = 0; // Declare a variable tempAverage set to 0
-
-    // FOR LOOP --> iterates an average amount of the first k amount items in the array 
+    // LOOP from k = 0 to the largets number of digits 
+    // FOR each iteration of the loop:
     // Set counter to 0 
-    // Break when counter reaches k 
+    // Break when counter reaches maxDigit
     // Increment counter by 1 
-    for (let i = 0; i < k; i++)  {
-        tempAverage += nums[i]// Total up the sum of the first k elements in nums array
+    for (let k = 0; k < maxDigitCount; k++) {
+        // Create buckets from each digit (0-9);
+        let digitBuckets = Array.from({length: 10}, () => []) // Subarrays of arrays 
+        for (let i = 0; i < nums.length; i++) {  // Place each number in the corresponding bucket on its kth digit 
+            let digit = getDigit(nums[i], k); 
+            digitBuckets[digit].push(nums[i]);
+        }
+        nums = [].concat(...digitBuckets); // Replace our exisiting array w/ values in out buckets, starting w/ 0 and going up to 9 
     }
-    maxAverage = Math.max(tempAverage / k, maxAverage) // Reassign tempSum to maxAverage 
+        
+    return nums; // RETURN list at the end
+}
 
-    // FOR LOOP --> itearates through nums array 
-    // Set counter to k --> we have the first k elements stored so negated the first k elements 
-    // Break when counter reaches the end of the array 
-    // Increment by 1 
-    for (let i = k; i < nums.length; i++) {
-        tempAverage = tempAverage - nums[i - k] + nums[i]; // Reassign temp and set a new temp sum by adding the existing element and subtracting the the first element 
-        maxAverage = Math.max(tempAverage / k, maxAverage) // Set maxAverage to the max average of tempAverage and maxAverage 
-    }
-    return maxAverage; // RETURN maxAverage
+console.log(radixSort([23,345,5467,12,2345,9852])); 
 
-};
 
-// console.log(findMaxAverage([1,12,-5,-6,50,3], 4) )
                             
 
