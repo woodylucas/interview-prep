@@ -590,18 +590,14 @@ function matrix(n) {
   // LOOP through the array and find the index of the value 
   function search(arr, val) {
       let output; 
-      for(const elem of arr) {
-          if (elem !== val) {
-              output = -1 
-          } else {
-              return arr.indexOf(elem); 
-          }
+      for (let i = 0; i < arr.length; i++) {
+          if (arr[i] === val) return i; 
       }
-      return output; 
+      return -1; 
   }
 
   const linearArr = [10, 15, 20, 25, 30]; 
-//   console.log(search(linearArr, 9))
+  console.log(search(linearArr, 30))
 
 
   function binarySearch(arr, val){
@@ -783,7 +779,7 @@ function merge(arr1, arr2) {
 
 // console.log(merge([1,10,50], [2,14,99,100]));
 
-
+// MERGE SORT 
 function mergeSort(arr) {
     // BASE CASE: 
     if (arr.length <= 1) return arr;
@@ -849,7 +845,7 @@ function pivot(arr, start = 0, end = arr.length - 1) {
             swap(arr, swapIdx, i); 
         }
     }
-    swap(arr, start, swapIdx); // Swap the start with the swapIdx
+    swap(arr, start, swapIdx); // Swap the start with the swapIdx --> so the pivot postion is swapped with the elements less than it
     return swapIdx; // RETURN idx 
 }
 
@@ -867,10 +863,7 @@ function quickSort(arr, left = 0, right = arr.length - 1) {
    
 }
 
-console.log(quickSort([4,6,9,1,2,5,3])); 
-
-
-
+// console.log(quickSort([4,6,9,1,2,5,3])); 
 
 
 
@@ -929,41 +922,6 @@ function twoSumSorted(numbers, target) {
 // console.log(twoSumSorted([2,7,11,15], 9)); 
 
 
-function maxSlidingWindow(nums, k) {
-    let maxSum = -Infinity // Declare a variable maxSum set to -Infinity 
-    let tempSum = 0; // Declare a variable tempSum set to 0 
-    const result = []
-    // EDGE CASE: 
-    // IF the length of num is less than k RETURN null 
-    if (nums.length < k) return null; 
-    
-   
-    
-    // FOR LOOP: iterates to add up the first 3 values in the array and store it into max sum 
-    // Set counter to 0
-    // Break when counter reaches --> k 
-    // Increment counter by 1
-    
-    for(let i = 0; i < k; i++) {
-        tempSum += nums[i]; 
-    }
-
-    maxSum = Math.max(tempSum, maxSum); // Reassign the value of maxSum into tempSum
-    
-    // FOR LOOP --> which will iterate through the nums starting from the k 
-    // Set a counter to k 
-    // Break when counter reaches the end of nums array 
-    // Increment counter by 1
-    for (let i = k; i < nums.length; i++) {
-        tempSum = tempSum  - nums[i - k]  + nums[i]; // REASSIGN tempSum to tempSum - the element at the index - k + the next element 
-        maxSum = Math.max(tempSum, maxSum); // REASSIGN maxSum to the value greater value between the two --> tempSum, maxSum
-        result.push(maxSum)
-    }
-       
-    return result; // RETURN maxSum
-};
-
-// console.log(maxSlidingWindow([1,3,-1,-3,5,3,6,7], 3))
 
 function findMaxAverage(nums, k) {
     //EDGE CASE: 
