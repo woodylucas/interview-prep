@@ -28,3 +28,24 @@ var middleNode = function(head) {
     }
     return slow; // RETURN slow.
 };
+
+function caesarCipher(str, num) {
+    let solved = '';
+    for(const char of str.split('')) {
+      const acsiNum = char.charCodeAt(); 
+      let sum = acsiNum + num;
+      // EDGE CASE: negative number 
+      if (num < 0) sum = 26 + sum;
+      
+      // LOWERCASE: 
+      if (acsiNum >= 97 && acsiNum <= 122) {
+        solved += String.fromCharCode(sum > 122 ? sum - 26 : sum) 
+      } else if (acsiNum >= 65 && acsiNum <= 90) {
+        // UPPERCASE: 
+        solved += String.fromCharCode(sum > 90 ? sum - 26 : sum) 
+      } else {
+        solved += char; 
+      }
+    }
+    return solved; 
+  }
