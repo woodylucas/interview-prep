@@ -190,7 +190,7 @@ function validAnagram2(str1, str2) {
     return true
 }
 
-// console.log(validAnagram2('cinema', 'iceman'))
+// console.log( validAnagram2('cinema', 'iceman'))
 
 
 function anagrams(stringA, stringB) {
@@ -995,7 +995,7 @@ function radixSort(nums) {
     return nums; // RETURN list at the end
 }
 
-console.log(radixSort([23,345,5467,12,2345,9852])); 
+// console.log(radixSort([23,345,5467,12,2345,9852])); 
 
 
                             
