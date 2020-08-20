@@ -30,6 +30,7 @@ var middleNode = function(head) {
 };
 
 function caesarCipher(str, num) {
+    num = num % 26; // IF an input num is greater than 26 or less than -26
     let solved = '';
     for(const char of str.split('')) {
       const acsiNum = char.charCodeAt(); 
@@ -48,4 +49,34 @@ function caesarCipher(str, num) {
       }
     }
     return solved; 
+  }
+  // caesarCipher('Zoo Keeper', 2 )
+  // caesarCipher('Big Car', -16 );
+  // caesarCipher('Javascript', -900);
+
+  function reverseVowels(s) {
+    const strArray = s.split(''); // Declare a const variable set to strArray
+    // SWAP function: 
+    const swap = (arr, idx1, idx2) => {
+      [ arr[idx1], arr[idx2]] = [ arr[idx2], arr[idx1] ]; 
+    }
+  
+    const vowels = ['a','e','i','o','u']; // Declare a const variable set to an array of vowels 
+    let left = 0;
+    let right = strArray.length - 1; // Declare a variable right set to the end of the array 
+    
+    while (left < right) {
+      if(vowels.indexOf(strArray[left].toLowerCase()) === - 1) {
+        left++;
+        continue; 
+      }
+       if(vowels.indexOf(strArray[right].toLowerCase()) === - 1) {
+        right--;
+        continue; 
+      }
+      swap(strArray, left, right);
+      left++; 
+      right--;
+    }
+    return strArray.join("");
   }
