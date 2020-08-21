@@ -80,3 +80,23 @@ function caesarCipher(str, num) {
     }
     return strArray.join("");
   }
+
+  var lengthOfLongestSubstring = function(s) {
+    let longest = 0; // Declare a variable longest set to 0 
+    let start = 0 // Declare a variable start set to 0 
+    const seen = {}; // Declare a const variable seen set to an empty object 
+    
+    // FOR loop iterate through string 
+    for (let i = 0; i < s.length; i++) {
+        const char = s[i]; 
+        
+        if (seen[char]) {
+            start = Math.max(start, seen[char]); 
+        }
+        
+        longest = Math.max(longest, i - start + 1); 
+        
+        seen[char] = i + 1; 
+    }
+    return longest; 
+};
