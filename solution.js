@@ -100,3 +100,110 @@ function caesarCipher(str, num) {
     }
     return longest; 
 };
+
+
+
+// A complement pair is a pair where both the positive and negative 
+// versions of a number exist within the input.
+// The output is returned as an array of unique elements.
+// The output can only have positive elements.
+// Example input 1: [6,-1,-2,9,-9,1,6,-9] [1,9]
+// output: [1,9] || [9,1]
+
+// The order does not matter.
+// 1 is included because there is both a positive and a negative 1.
+// 9 is included because there is both a positive and a negative 9.
+// Example input 2: [-6,-2,9,-1,6,1,1,-2]
+// output: [6 1]
+
+
+    // [6,9,9,1,6,8,8]
+    // [-1,-2,-9,-9]
+    
+    // {6: 2, -1: 1, -2: 1, 9: 1, -9: 2, 8: 2}
+    // 
+  
+    function complementPair(array) {
+  
+        const positive = [];// Declare const variable postive set to an empty array 
+        const negative = [];// Declare const varible negative set to an empty array
+        const results = []; 
+       
+        
+        // FOR LOOP: 
+        // Set the counter to 0 
+        // Break when the counter reaches the end of the array 
+        // Increment the counter by 1 
+        
+        for (const elem of array) {
+          if (elem < 0) {
+            negative.push(elem); 
+          } else {
+            positive.push(elem); 
+          }
+        }
+        
+        let negHash = buildMap(negative); 
+        let posHash = buildMap(positive);
+        
+        for (const key in posHash) {
+          if(key * -1 in negHash) {
+            results.push(parseInt(key))
+          }
+        }
+        return results; 
+        
+      }
+      const arr = [6,-1,-2,9,-9,1,6,-9];
+      // console.log(complementPair(arr));
+      
+      function buildMap(arr) {
+        const freqCount = {}; 
+        for (const key of arr) {
+          freqCount[key] = (freqCount[key] || 0) + 1; 
+        }
+        return freqCount; 
+      }
+      
+      
+      // Reverse the vowels within a string. Leave anything that isn't a vowel in the same location.
+      // Treat Y as if it isn't a vowel.
+      // Perform in constant space and linear time.
+      // Example input 1: 'whiteboard'
+      // output: 'whatobeird'
+      
+      // The vowels within 'whiteboard' are ieoa. Those were reversed within the string.
+      // Example input 2: 'string test number two'
+      // output:
+      
+      function reverseString(string) {
+        const vowels = ['a','e','i','o','u']; 
+        const swap = (arr, idx1, idx2) => [arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]]; 
+        const strArr = string.split('')
+        let left = 0; 
+        let right = strArr.length - 1; 
+        
+        while (left < right) {
+          
+          if(vowels.indexOf(strArr[left].toLowerCase()) === - 1) {
+            left++; 
+            continue;
+          }
+          
+          if(vowels.indexOf(strArr[right].toLowerCase()) === - 1 ) {
+            right--; 
+            continue;
+          }
+          
+          swap(strArr, left, right) 
+          left++
+          right--
+        }
+        
+        return strArr.join(''); 
+      }
+      
+      console.log(reverseString('whiteboard')); 
+      
+      
+      
