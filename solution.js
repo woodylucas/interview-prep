@@ -174,7 +174,7 @@ function caesarCipher(str, num) {
       
       // The vowels within 'whiteboard' are ieoa. Those were reversed within the string.
       // Example input 2: 'string test number two'
-      // output:
+      
       
       function reverseString(string) {
         const vowels = ['a','e','i','o','u']; 
