@@ -204,35 +204,31 @@ function caesarCipher(str, num) {
       }
       
     //   console.log(reverseString('whiteboard')); 
+    
+function countPairs(n) {
+    return (n * (n - 1)) / 2;
+}
+    
+function sherlock(string) {
+    const freqCount = {}; 
+    let result = 0; 
 
-    function countPairs(n) {
-        return (n * (n - 1)) / 2;
-    }
-    
-    
-    function sherlock(string) {
-      const map = new Map(); 
-      let result = 0; 
-      for (let i = 0; i < string.length; i++) {
+    for(let i = 0; i < string.length; i++) {
         for (let j = i; j < string.length; j++) {
-          const sub = string.substring(i, j + 1); 
-          const key = sub.split('').sort().join('');
-          if (map.has(key)) {
-            map.set(key, map.get(key) + 1);
-          } else {
-            map.set(key,1); 
-          }
+            const sub = string.substring(i, j + 1);
+            key = sub.split('').sort().join('')
+            freqCount[key] = (freqCount[key] || 0) + 1
         }
-      }
-      for (const [key, value] of map) {
-        if (value > 1) {
-          result += countPairs(value); 
-          conso
+    }
+
+    for (const key in freqCount) {
+        if (freqCount[key] > 1) {
+            result += countPairs(freqCount[key])
         }
-      }
-      return result 
     }
     
+    return result;
+}
     sherlock('kkkk'); 
       
       
