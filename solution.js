@@ -203,7 +203,37 @@ function caesarCipher(str, num) {
         return strArr.join(''); 
       }
       
-      console.log(reverseString('whiteboard')); 
+    //   console.log(reverseString('whiteboard')); 
+
+    function countPairs(n) {
+        return (n * (n - 1)) / 2;
+    }
+    
+    
+    function sherlock(string) {
+      const map = new Map(); 
+      let result = 0; 
+      for (let i = 0; i < string.length; i++) {
+        for (let j = i; j < string.length; j++) {
+          const sub = string.substring(i, j + 1); 
+          const key = sub.split('').sort().join('');
+          if (map.has(key)) {
+            map.set(key, map.get(key) + 1);
+          } else {
+            map.set(key,1); 
+          }
+        }
+      }
+      for (const [key, value] of map) {
+        if (value > 1) {
+          result += countPairs(value); 
+          conso
+        }
+      }
+      return result 
+    }
+    
+    sherlock('kkkk'); 
       
       
       
