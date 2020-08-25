@@ -233,3 +233,11 @@ const person = {
     }
 }
 
+
+// Creating substrings
+
+function longestSub(str) {
+    return str; 
+}
+
+console.log(longestSub("abcabcbb"));
