@@ -229,7 +229,29 @@ function sherlock(string) {
     
     return result;
 }
-    sherlock('kkkk'); 
+// sherlock('kkkk'); 
+
+
+function balancedStringSplit(s) {
+    let balance = 0; 
+    let counter = 0; 
+    
+    for (let i = 0; i < s.length; i++) {
+        // IF the element 'L' exist count
+        if (s[i] === 'L') {
+            counter++; 
+        // IF the element 'R' exist decrement count
+        } else if (s[i] === 'R') {
+            counter--; 
+        }
+        // IF the count is 0 Increment count
+        if (counter === 0) balance++;
+    }
+    
+    return balance; // RETURN balance
+};
+
+console.log(balancedStringSplit('RLRRLLRLRL'));
       
       
       
