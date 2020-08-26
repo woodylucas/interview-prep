@@ -251,7 +251,46 @@ function balancedStringSplit(s) {
     return balance; // RETURN balance
 };
 
-console.log(balancedStringSplit('RLRRLLRLRL'));
+// console.log(balancedStringSplit('RLRRLLRLRL'));
+
+function reformat(string) {
+    // FORMATTED storage
+    const results = []
+    // SEPERATE the characters 
+    const letters = string.split('').filter(char => isNaN(char)); 
+    const numbers = string.split('').filter(char => !isNaN(char)); 
+
+    // EDGE CASE 1: If the diffrence of the elements are greater than 1 
+    if (Math.abs(letters.length - numbers.length) > 1) return ""; 
+
+    // EDGE CASE 2: IF numbers are more than letters 
+    const numberIsMore = numbers.length > letters.length ? true : false;  
+
+    // DECLARE two counters for each individual string 
+    let i = 0; 
+    let j = 0; 
+
+    // WHILE Loop that iterates through both arrays 
+    while (i < letters.length && j < numbers.length) {
+
+        if (numberIsMore) {
+        // PUSH the element that has more characters first follow by second if statement is true
+        results.push(numbers[j++]); 
+        results.push(letters[i++]); 
+        } else {
+        // FALSE 
+        results.push(letters[i++]); 
+        results.push(numbers[j++]); 
+        }
+    }
+
+    // RESIDUAL
+    while (i < letters.length) results.push(letters[i++]);
+    while (j < numbers.length) results.push(numbers[j++]);
+
+    return results.join(''); // RETURN results as a string 
+  }
+//   reformat("covid2019")
       
       
       
