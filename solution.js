@@ -291,6 +291,84 @@ function reformat(string) {
     return results.join(''); // RETURN results as a string 
   }
 //   reformat("covid2019")
+
+
+// Two Sum 
+
+
+// SOLUTION 1
+
+	// O(n^2) n time is | O(1) space
+function twoNumberSum(array, targetSum) {
+  // FOR LOOP iterate through array to obtain a single element 
+	for (let i = 0; i < array.length; i++) {
+		// initialize a const variable set to current element 
+		const current = array[i];
+		// FOR loop iterate through the array to obtain the next element
+		for (let j = i + 1; j < array.length; j++) {
+			const next = array[j]; 
+			if (current + next === targetSum) {
+				return [current, next]; // RETURN an array with those elements stored
+			}
+		}
+			
+	}
+			// IF the condtion isn't met return an empty array 
+	return []; 
+}
+
+// SOLUTION # 2
+// O(n) runtime | O(n) space 
+
+function twoNumberSum(array, targetSum) {
+  // Write your code here.
+	const seen = {}; // initialize a const variable set as seen as a dictionary for the array elements
+	// iterate through the array and store the difference of the current element and target
+	for (const elem of array) {
+		// DIFFRENCE 
+		const possible = targetSum - elem; 
+		// IF this element is a key 
+		if (possible in seen) {
+			// RETURN an array of the two elements
+			return [possible, elem]
+		} else {
+			// Set the value to true
+			seen[elem] = true; 
+		}
+	}
+	// Condtions aren't met so return an empty array
+	return [];
+}
+
+
+
+
+// solution 3
+// O(nlog(n) | O(1) space
+function twoNumberSum(array, targetSum) {
+  // Write your code here.
+	// sort the array in ascending ordered 
+	array.sort((a, b) => a - b); 
+	// initialize two pointers a left and right 
+	let left = 0; // left will start at first index 
+	let right = array.length - 1; // right will start from the end 
+	while (left < right) {
+		// initialize a sum variable that will store the sum of two elements
+		const sum = array[left] + array[right]; 
+		if (sum === targetSum) {
+			// There is a match
+			return [array[left], array[right]]; 
+		} else if (sum > targetSum) {
+			// right pointer towards the left
+			right--; 
+		} else {
+			// sum is less than targetSum so send the pointer to the right 
+			left++; 
+		}
+	}
+	// the condition isn't met 
+	return []; 
+}
       
       
       
