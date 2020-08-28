@@ -369,6 +369,40 @@ function twoNumberSum(array, targetSum) {
 	// the condition isn't met 
 	return []; 
 }
+
+function longestPalindromicSubstring(string) {
+  // Write your code here.
+	
+	let longest = '';// initialize a variable longest that will be set to an empty string
+	// iterate over string to create substring w/ nested loops
+	for (let i = 0; i < string.length; i++) {
+		for(let j = i; j < string.length; j++) {
+			// manipulate the string with slice to create multiple substrings
+			const substring = string.slice(i, j + 1); 
+			// to obtain the the longest substring check to see if its longer than longest AND is a palindrome
+			if (substring.length > longest.length && isPalindrome(substring)) {
+				// store the substring into longest
+				longest = substring;
+			}
+		}
+	}
+	return longest; // return the longest substring that was stored
+}
+// Helper function 
+function isPalindrome(str) {
+	// start from the beginning of the string and the end
+	let leftIdx = 0; 
+	let rightIdx = str.length - 1;
+// while left is less than right keep iterating 
+	while (leftIdx < rightIdx) {
+		// both characters at opposite indices don't match it isn't a palindrome
+		if (str[leftIdx] !== str[rightIdx]) return false; 
+		// True until one of these condtions are not met 
+		leftIdx++; 
+		rightIdx--; 
+	}
+	return true; 
+}
       
       
       
