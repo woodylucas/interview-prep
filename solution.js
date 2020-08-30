@@ -445,3 +445,23 @@ function groupAnagrams(words) {
 	return Object.values(freqCount); 
 }
       
+
+
+function longestSubstringWithoutDuplication(string) {
+  // Write your code here.
+	const seen = {}; // initialize a variable that stores an empty object 
+	let startIdx = 0; // marker for starting index 
+	let longest = [0, 1]; 
+	for (let i = 0; i < string.length; i++) {
+		const char = string[i];
+		if (char in seen) {
+			// update the startIdx 
+			startIdx = Math.max(startIdx, seen[char] + 1); 
+		}
+		if (longest[1] - longest[0] < i + 1 - startIdx) {
+			longest = [startIdx, i + 1]; 
+		}
+		seen[char] = i;
+	}
+	return string.slice(longest[0], longest[1]);
+}
