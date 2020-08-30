@@ -429,6 +429,19 @@ function expandFromMiddle(string, leftIdx, rightIdx) {
 	return [leftIdx + 1, rightIdx]; 
 }
 
-      
-      
+
+
+function groupAnagrams(words) {
+  // Write your code here.
+	const freqCount = {}; 
+	for (const word of words) {
+		const sortedWord = word.split('').sort().join(''); 
+		if (sortedWord in freqCount) {
+			freqCount[sortedWord].push(word);
+		} else {
+			freqCount[sortedWord] = [word]; 
+		}
+	}
+	return Object.values(freqCount); 
+}
       
