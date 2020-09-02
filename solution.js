@@ -451,7 +451,7 @@ function longestSubstringWithoutDuplication(string) {
   // Write your code here.
 	const seen = {}; // initialize a variable that stores an empty object 
 	let startIdx = 0; // marker for starting index 
-	let longest = [0, 1]; 
+	let longest = [0, 1]; // Two indices
 	for (let i = 0; i < string.length; i++) {
 		const char = string[i];
 		if (char in seen) {
