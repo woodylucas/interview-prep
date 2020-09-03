@@ -465,3 +465,30 @@ function longestSubstringWithoutDuplication(string) {
 	}
 	return string.slice(longest[0], longest[1]);
 }
+
+
+
+function rgb(string) {
+  let min = Infinity; // initialize a variable to store the min amount, so store a high number. 
+  const freqCount = {}; // initialize a const variable set to an empty object to store occurrences 
+
+  // FOR LOOP: iterate through string and collect all the characters frequency of occurrences
+  for (const character of string) {
+     // IF the character occurs onces add its character as a key and its occurrence 1 as its value, appears again 
+    if (!freqCount[character]) {
+      freqCount[character] = 1; 
+    } else {
+      //  character exist? increment its value by 1
+      freqCount[character]++; 
+    }
+  }
+  // FOR IN LOOP ---> iterate through key & value pairs  
+  for (const character in freqCount) {
+    freqCount.hasOwnProperty('r') &&
+    freqCount.hasOwnProperty('g') &&
+    freqCount.hasOwnProperty('b') ? min = Math.min(min, freqCount[character]) : min = 0; 
+  }
+
+  return min; 
+}
+
