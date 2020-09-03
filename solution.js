@@ -492,3 +492,23 @@ function rgb(string) {
   return min; 
 }
 
+function missingNumber(n, arr) {
+  // YOUR WORK HERE
+  const missing = []; // initialize an empty array that will store the result
+  const lookup = {}; // initialize an empty object that will serve as a lookup for elements 
+
+  // FOR LOOP iterate through elements and store the number as its key and and a boolean if they exist
+  for (let i = 0; i < arr.length; i++) {
+    const num = arr[i];
+    lookup[num] = true; 
+  }
+  // FOR LOOP iterate through n and obtain all the numbers starting from 1 to n
+  for (let i = 1; i <= n; i++) {
+    const num = i; 
+    // IF the number doesn't exist in lookup 
+    if (parseInt(num) in lookup === false) {
+      missing.push(num); // PUSH that number into missing array
+    }
+  }
+  return missing; // RETURN missing elements
+}
