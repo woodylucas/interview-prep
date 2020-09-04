@@ -550,3 +550,32 @@ function charMap(string) {
   }
   return freqCount; 
 }
+
+
+function characterMode(string) {
+  // YOUR WORK HERE
+ // initialize a const variable maxChar to empty string that will store the max characters 
+ let maxCharacters = [];
+ // initialize a max that will store the max numbers which will be the value 
+ let max = 0; 
+ // initialzie a const variable that will store an empty object 
+ const freqCount = {}; 
+
+ // FOR LOOP iterate through the string and obtain all the string characters occurrences with a hash map 
+ for (const char of string) {
+   freqCount[char] = (freqCount[char] || 0) + 1; 
+ }
+
+ // FOR IN LOOP to iterate over our hash map object 
+ const vals = Object.values(freqCount);
+ for (const char in freqCount) {
+   // initialize a variable current
+   const currentVal = freqCount[char];
+   // IF current is greater than max 
+   max = Math.max(...vals, max); 
+   if (max === currentVal) {
+     maxCharacters.push(char);  // maxCharacters will store the max key
+   }
+ }
+  return maxCharacters.join('');// RETURN maxcharacters
+}
