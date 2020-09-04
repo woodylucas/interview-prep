@@ -512,3 +512,20 @@ function missingNumber(n, arr) {
   }
   return missing; // RETURN missing elements
 }
+
+
+
+function getDuplicates(arr) {
+  // YOUR WORK HERE
+  const freqCount = {}; 
+  const duplicates = []
+  for (const element of arr) {
+    freqCount[element] = (freqCount[element] || 0) + 1; 
+  }
+  for (const key in freqCount) {
+    if (freqCount[key] >= 2) {
+      duplicates.push(parseInt(key))
+    }
+  }
+  return duplicates; 
+}
