@@ -529,3 +529,24 @@ function getDuplicates(arr) {
   }
   return duplicates; 
 }
+
+function anagramPair(string1, string2) {
+  // YOUR WORK HERE
+  const str1Map = charMap(string1); 
+  const str2Map = charMap(string2);
+  // EDGE CASE: 
+  if (Object.keys(str1Map).length !== Object.keys(str2Map).length) return false; 
+
+  for (const character in str1Map) {
+    if (str1Map[character] !== str2Map[character]) return false; 
+  }
+  return true; 
+}
+// HELPER METHOD
+function charMap(string) {
+  const freqCount = {}; 
+  for (const char of string) {
+    freqCount[char] = (freqCount[char] || 0) + 1; 
+  }
+  return freqCount; 
+}
