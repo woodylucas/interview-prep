@@ -628,3 +628,41 @@ function acsiiArray(string) {
   }
   return acsiiArray
 }
+
+function closestValue(arr, target) {
+  // YOUR WORK HERE
+  let leftIdx = 0;
+  let rightIdx = arr.length - 1;
+  if (target <= arr[0]) return arr[0]; 
+  if (target >= arr[arr.length -1]) return arr[arr.length -1]
+  while (leftIdx <= rightIdx) {
+    let middleIdx = Math.floor((leftIdx + rightIdx) / 2); 
+    if (target < arr[middleIdx]) {
+      if (middleIdx > 0 && target <= arr[middleIdx]) {
+        console.log(leftIdx, middleIdx);
+        if (target > arr[leftIdx]) {
+          return getCloser(target, arr[leftIdx + 1], arr[middleIdx - 1]);
+        } else if (target > arr[leftIdx + 1] && target < arr[middleIdx]) {
+          return getCloser(target, arr[middleIdx], arr[middleIdx - 1])
+        }
+      }
+       rightIdx = middleIdx; 
+       }  else if (target > arr[middleIdx]) {
+         if (middleIdx < rightIdx && target > arr[middleIdx]) {
+           return getCloser(target, arr[middleIdx], arr[middleIdx + 1]) 
+         } else if (target > arr[middleIdx + 1] && target < arr[rightIdx]){
+           return getCloser(target, arr[middleIdx + 1], arr[rightIdx - 1])
+         }
+         leftIdx = middleIdx + 1; 
+
+    }
+  }
+}
+
+function getCloser(target, val1, val2) {
+  if (Math.abs(target - val1) <= Math.abs(target - val2)) {
+    return val1; 
+  } else {
+    return val2; 
+  }
+}
