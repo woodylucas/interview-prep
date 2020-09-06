@@ -728,7 +728,21 @@ function twoSumSorted(numbers, target) {
 }
 
 // console.log(twoSumSorted([2,7,11,15], 9)); 
-
+function numberOfOnes(arr) {
+    // YOUR WORK HERE
+    let leftIdx = 0;
+    let rightIdx = arr.length - 1; 
+    let counter = 0; 
+    while (leftIdx < arr.length) {
+      if (arr[rightIdx] === 1) {
+        counter++;
+        rightIdx--; 
+      }
+      leftIdx++; 
+    }
+    return counter; 
+  }
+  
 
 
 function findMaxAverage(nums, k) {
