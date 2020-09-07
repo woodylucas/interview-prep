@@ -667,37 +667,38 @@ function getCloser(target, val1, val2) {
   }
 }
 
-// O(log(n)) time | O(1) space 
-let leftIdx = 0; 
-let rightIdx = array.length - 1;
-while (leftIdx < rightIdx) {
-  const middleIdx = Math.floor((leftIdx + rightIdx) / 2);
-  if (array[middleIdx] > array[rightIdx]) {
-    leftIdx = middleIdx + 1; 
-  } else {
-    rightIdx = middleIdx; 
-  }
-}
-  let start = leftIdx;
-  leftIdx = 0; 
-  rightIdx = array.length - 1; 
-  
-  if (target >= array[start] && target <= array[rightIdx]) {
-    leftIdx = start; 
-  } else {
-    rightIdx = start; 
-  }
-
-
-while (leftIdx <= rightIdx) {
-  let middleIdx = Math.floor((leftIdx + rightIdx) / 2); 
-  if (target > array[middleIdx]) {
-    leftIdx = middleIdx + 1; 
-  } else if (target < array[middleIdx]) {
-    rightIdx = middleIdx - 1; 
-  } else {
-    return middleIdx; 
-  }
-}
-return - 1; 
+function shiftedBinarySearch(array, target) {
+  // O(log(n)) time | O(1) space 
+	let leftIdx = 0; 
+	let rightIdx = array.length - 1;
+	while (leftIdx < rightIdx) {
+		const middleIdx = Math.floor((leftIdx + rightIdx) / 2);
+		if (array[middleIdx] > array[rightIdx]) {
+			leftIdx = middleIdx + 1; 
+		} else {
+			rightIdx = middleIdx; 
+		}
+	}
+		let start = leftIdx;
+		leftIdx = 0; 
+		rightIdx = array.length - 1; 
+		
+		if (target >= array[start] && target <= array[rightIdx]) {
+			leftIdx = start; 
+		} else {
+			rightIdx = start; 
+		}
+	
+	
+	while (leftIdx <= rightIdx) {
+		let middleIdx = Math.floor((leftIdx + rightIdx) / 2); 
+		if (target > array[middleIdx]) {
+			leftIdx = middleIdx + 1; 
+		} else if (target < array[middleIdx]) {
+			rightIdx = middleIdx - 1; 
+		} else {
+			return middleIdx; 
+		}
+	}
+	return - 1; 
 }
