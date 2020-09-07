@@ -718,15 +718,20 @@ function greaterValues(arr, target) {
       // Increment leftIdx until the the first index greater than target is found. 
       if (arr[leftIdx] > target) {
         // subtract the distance between right and left
-        return rightIdx - leftIdx + 1;  
+        return (rightIdx - leftIdx + 1);  
       } 
       leftIdx++ // incrementor 
       // if target is greater than or equal to middle 
     } else if (target >= arr[middleIdx]) {
+
       // array is sorted so the next element has to be greater so set leftIdx to the next.
       leftIdx = middleIdx + 1; 
+      if (target > arr[leftIdx]) {
+        leftIdx++; 
+        return (rightIdx - leftIdx + 1);
+      } 
       // substract to obtain the distance between right and left to obtain the length.
-      return rightIdx - leftIdx + 1; 
+      return (rightIdx - leftIdx + 1);
     }
   }
 }
