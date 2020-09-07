@@ -702,3 +702,31 @@ function shiftedBinarySearch(array, target) {
 	}
 	return - 1; 
 }
+
+
+function greaterValues(arr, target) {
+  // YOUR WORK HERE
+  // EDGE Case:
+  if (target >= arr[arr.length -1]) return 0;
+  let leftIdx = 0; 
+  let rightIdx = arr.length - 1;
+
+  while (leftIdx <= rightIdx) {
+    let middleIdx = Math.floor((leftIdx + rightIdx) / 2);
+    // IF the target is less than the middleIdx 
+    if (target < arr[middleIdx]) {
+      // Increment leftIdx until the the first index greater than target is found. 
+      if (arr[leftIdx] > target) {
+        // subtract the distance between right and left
+        return rightIdx - leftIdx + 1;  
+      } 
+      leftIdx++ // incrementor 
+      // if target is greater than or equal to middle 
+    } else if (target >= arr[middleIdx]) {
+      // array is sorted so the next element has to be greater so set leftIdx to the next.
+      leftIdx = middleIdx + 1; 
+      // substract to obtain the distance between right and left to obtain the length.
+      return rightIdx - leftIdx + 1; 
+    }
+  }
+}
