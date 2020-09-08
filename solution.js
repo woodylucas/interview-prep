@@ -735,3 +735,21 @@ function greaterValues(arr, target) {
     }
   }
 }
+
+function squareRoot(n) {
+  // YOUR WORK HERE
+  let start = 1; // initialize a pointer set to 1
+  let end = n; // initiazlie a pointer set to n 
+  while (start <= end) {
+    let middle = (start + end) / 2;
+    if (middle ** 2 === n) {
+      return middle; 
+    } else if ( middle ** 2 > n) {
+      end = middle - 1; 
+    } else {
+      start = middle + 1; 
+    }
+  }
+  
+  return end;
+}
