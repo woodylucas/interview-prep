@@ -742,11 +742,14 @@ function squareRoot(n) {
   let end = n; // initiazlie a pointer set to n 
   while (start <= end) {
     let middle = (start + end) / 2;
+    // IF the middle square is the same as the input 
     if (middle ** 2 === n) {
-      return middle; 
-    } else if ( middle ** 2 > n) {
+      return middle; // return middle 
+    } else if ( middle ** 2 > n) { 
+      // GREATER than n 
       end = middle - 1; 
     } else {
+      // LESS than n
       start = middle + 1; 
     }
   }
