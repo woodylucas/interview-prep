@@ -756,3 +756,24 @@ function squareRoot(n) {
   
   return end;
 }
+
+// Time Complexity O(N) Linear | Space O(N) Linear 
+function soldiers(arr) {
+  const freqCount = {}; 
+  for (const rank of arr) {
+    if (freqCount[rank]) {
+      freqCount[rank]++
+    } else {
+      freqCount[rank] = 1
+    }
+  }
+  let sum = 0; 
+  for (const rank in freqCount) {
+    if (parseInt(rank) + 1 in freqCount) {
+      sum += freqCount[rank]; 
+    }
+  }
+  return sum; 
+}
+
+soldiers([4,4,3,3,1,0])
