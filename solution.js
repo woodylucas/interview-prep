@@ -776,4 +776,19 @@ function soldiers(arr) {
   return sum; 
 }
 
-soldiers([4,4,3,3,1,0])
+// soldiers([4,4,3,3,1,0])
+
+function uniqueSumZero(n) {
+  const results = []; 
+  let midpoint = Math.floor(n / 2); 
+  for (let i = 0; i < midpoint; i++) {
+    results.push(i + 1); 
+    results.push((-1) * (i + 1));
+  }
+  if (n % 2 === 1) {
+    results.push(0); 
+  }
+  return results;
+}
+
+uniqueSumZero(4); 
