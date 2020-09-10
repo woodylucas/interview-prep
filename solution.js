@@ -879,3 +879,19 @@ var solution = function(isBadVersion) {
       return left;
   };
 };
+
+var findPeakElement = function(nums) {
+  let leftIdx = 0; 
+  let rightIdx = nums.length - 1; 
+  while (leftIdx < rightIdx) {
+      let middleIdx = leftIdx + Math.floor((rightIdx - leftIdx) / 2); 
+      if (nums[middleIdx] > nums[middleIdx + 1]) {
+          rightIdx = middleIdx; 
+      } else {
+          leftIdx = middleIdx + 1; 
+      }  
+  }
+  return leftIdx; 
+};
+
+// findPeakElement([1,2,1,3,5,6,4])
