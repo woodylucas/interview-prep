@@ -791,4 +791,22 @@ function uniqueSumZero(n) {
   return results;
 }
 
-uniqueSumZero(4); 
+// uniqueSumZero(4); 
+
+
+var mySqrt = function(x) {
+  if (x < 2) return x; 
+  let left = 1; 
+  let right = x; 
+  while (left < right) {
+      let middle = Math.floor((left + right) / 2); 
+      if (middle ** 2 === x) {
+          return middle; 
+      } else if (middle ** 2 > x) {
+          right = middle; 
+      } else if (middle ** 2 < x) {
+          left = middle + 1; 
+      }
+  }
+  return left - 1; 
+};
