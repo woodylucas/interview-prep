@@ -810,3 +810,20 @@ var mySqrt = function(x) {
   }
   return left - 1; 
 };
+
+function guessNumber(n) {
+  let start = 1; 
+  let end = n;
+  while (start <= end) {
+      let middle = Math.floor((start + end) / 2);
+      const result = guess(middle);
+      if (result === 0) {
+          return middle; 
+      } else if (result === 1) {
+          start = middle + 1; 
+      } else if (result === - 1)  {
+          end = middle - 1; 
+      }
+  }
+  return end;
+};
