@@ -827,3 +827,37 @@ function guessNumber(n) {
   }
   return end;
 };
+
+var search = function(nums, target) {
+  let leftIdx = 0; 
+  let rightIdx = nums.length - 1; 
+  while (leftIdx < rightIdx) {
+      let middleIdx = leftIdx + Math.floor((rightIdx - leftIdx) / 2); 
+      if (nums[middleIdx] > nums[rightIdx]) {
+          leftIdx = middleIdx + 1; 
+      } else {
+          rightIdx = middleIdx; 
+      }
+  }
+  let startIdx = leftIdx;
+  leftIdx = 0; 
+  rightIdx = nums.length - 1;
+  
+  if (target >= nums[startIdx] && target <= nums[rightIdx]) {
+      leftIdx = startIdx; 
+  } else {
+      rightIdx = startIdx; 
+  }
+  
+  while (leftIdx <= rightIdx) {
+      let middleIdx = leftIdx + Math.floor((rightIdx - leftIdx) / 2); 
+      if (target > nums[middleIdx]) {
+          leftIdx = middleIdx + 1; 
+      } else if (target < nums[middleIdx]) {
+          rightIdx = middleIdx -1; 
+      } else {
+          return middleIdx;
+      }
+  }
+  return - 1; 
+};
