@@ -895,3 +895,29 @@ var findPeakElement = function(nums) {
 };
 
 // findPeakElement([1,2,1,3,5,6,4])
+
+var findMin = function(nums) {
+  // EDGE CASES: 
+  if (nums.length === 0) return - 1; 
+  if (nums.length === 1) return nums[0];
+  
+  // initialize two pointers: leftIdx rightIdx 
+  let leftIdx = 0; // start position 
+  let rightIdx = nums.length - 1; // end position
+  
+  while (leftIdx < rightIdx) {
+      // initialize a middle postion to search in halves
+      let middleIdx = leftIdx + Math.floor((rightIdx - leftIdx) / 2); 
+      
+      if (middleIdx > 0 && nums[middleIdx] < nums[middleIdx -1]) {
+          return nums[middleIdx]; 
+      } else if (nums[leftIdx] <= nums[middleIdx] && nums[middleIdx] > nums[rightIdx]) {
+          leftIdx = middleIdx + 1; 
+      } else {
+          rightIdx = middleIdx - 1; 
+      }
+  }
+  return nums[leftIdx]; 
+};
+
+// findMin([4,5,6,7,0,1,2]);
