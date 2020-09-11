@@ -311,3 +311,18 @@ function arrayPairs(arr) {
 }
 
 arrayPairs([1, 2, 3, 4, 5, 6])
+
+
+function power(base, exponent) {
+  // YOUR WORK HERE
+  let result = 1; 
+  function helper(counter) {
+    if (counter === exponent) return; 
+    result *= base; 
+    helper(counter + 1); 
+  }
+  helper(0); 
+  return result;
+}
+
+power(3, 4)
