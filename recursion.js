@@ -282,3 +282,18 @@ function power(base, exp){
       return base * power(base, exp - 1); 
   }
 }
+
+function printArray(nums){
+  function helper(arr) {
+    // IF the array's length is greater than 0 
+    if (arr.length > 0) {
+      // print the first element 
+      console.log(input[0])
+      // remove that element until condtion is false
+      helper(input.slice(1))
+    }
+  }
+ return helper(arr) // RETURN helper
+}
+
+printArray([1, 2, 3]); 
