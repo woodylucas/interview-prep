@@ -270,3 +270,15 @@ function fib(n) {
 
 fib = memoize(fib)
   
+function power(base, exp){
+  if (exp === 0) {
+      return 1; 
+  } else if (exp < 0) {
+      return 1 / power(base, -exp); 
+  } else if (exp % 2 === 0) {
+      let y = power(base, (exp / 2) ); 
+      return y * y; 
+  } else if (exp % 2 !== 0) {
+      return base * power(base, exp - 1); 
+  }
+}
