@@ -296,4 +296,18 @@ function printArray(nums){
  return helper(arr) // RETURN helper
 }
 
-printArray([1, 2, 3]); 
+// printArray([1, 2, 3]); 
+
+function arrayPairs(arr) {
+  // YOUR WORK HERE
+  const results = []
+  function helper(index) {
+    if (index >= arr.length) return; 
+    results.push([arr[index], arr[index + 1]])
+    helper(index + 2); 
+  }
+  helper(0); 
+  return results; 
+}
+
+arrayPairs([1, 2, 3, 4, 5, 6])
