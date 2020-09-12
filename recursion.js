@@ -326,3 +326,23 @@ function power(base, exponent) {
 }
 
 power(3, 4)
+
+function merge(arr1, arr2){
+  // YOUR WORK HERE
+  let results = []; 
+  function helper(i, j) {
+    if (i >= arr1.length && j >= arr2.length) return; 
+    if (j >= arr2.length || i < arr1.length && arr1[i] < arr2[j] ) {
+      results.push(arr1[i]);
+      i++
+    } else {
+      results.push(arr2[j]);
+      j++; 
+    }
+    helper(i, j); 
+  }
+  helper(0,0);
+  return results
+}
+
+ merge([1, 4, 7], [2, 3, 6, 9])// =>  [1, 2, 3, 4, 6, 7, 9]
