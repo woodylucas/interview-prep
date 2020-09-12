@@ -346,3 +346,18 @@ function merge(arr1, arr2){
 }
 
  merge([1, 4, 7], [2, 3, 6, 9])// =>  [1, 2, 3, 4, 6, 7, 9]
+
+ function reverseString(string) {
+  function traverse(leftIdx, rightIdx) {
+    if (leftIdx < rightIdx) {
+      const temp = string[leftIdx]; 
+      string[leftIdx] = string[rightIdx]; 
+      string[rightIdx] = temp; 
+      reverseString(leftIdx + 1, rightIdx - 1); 
+    }
+  }
+  traverse(0, string.length - 1)
+  return string; 
+}
+
+reverseString(["h","e","l","l","o"])
