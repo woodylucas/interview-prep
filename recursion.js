@@ -360,4 +360,16 @@ function merge(arr1, arr2){
   return string; 
 }
 
-reverseString(["h","e","l","l","o"])
+// reverseString(["h","e","l","l","o"])
+
+function numUniqueEmails(emails) {
+  const lookup = new Set(); 
+  for (const email of emails) {
+    const array = email.split('@');
+    array[0] = array[0].split('+')[0]; 
+    array[0] = array[0].replace(/\./g, ''); 
+    lookup.add(array.join('@'));
+  }
+  return lookup.size; 
+}
+numUniqueEmails(input); 
