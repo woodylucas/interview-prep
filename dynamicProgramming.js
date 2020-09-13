@@ -11,4 +11,27 @@ function maxSubarray(array) {
     }
     return maxSoFar; // RETURN maxSoFar
 }
+
+function longestPalindromicSubstring(string) {
+    // Write your code here.
+    // O(n ^2) time | O(n) space
+      let currentLongest = [0, 1]; // initialize an array starting at 0 and 1 --> i + 1
+      for (let i = 1; i < string.length; i++) {
+          const odd = expandFromMiddle(string, i - 1, i); // a b a
+          const even  = expandFromMiddle(string, i - 1, i + 1); // ab ba
+          const longest = odd[1] - odd[0] > even[1] - even[0] ? odd : even; 
+          currentLongest = currentLongest[1] - currentLongest[0] > longest[1] - longest[0] ? currentLongest : longest
+      }
+      return string.slice(currentLongest[0], currentLongest[1]); 
+  }
+  
+  
+  function expandFromMiddle(string, leftIdx, rightIdx) {
+      while (leftIdx >= 0 && rightIdx < string.length) {
+          if (string[leftIdx] !== string[rightIdx]) break; 
+          leftIdx--; 
+          rightIdx++; 
+      } 
+      return [leftIdx + 1, rightIdx]; 
+  }
   
