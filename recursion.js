@@ -373,3 +373,16 @@ function numUniqueEmails(emails) {
   return lookup.size; 
 }
 numUniqueEmails(input); 
+
+function getMinStepsMemo(n, cache = {}) {
+  if (n === 1) return 0; 
+  if (cache[n]) return cache[n];
+  let result = getMinStepsMemo(n - 1, cache); 
+  
+  if ( n % 2 === 0) result = Math.min(result, getMinStepsMemo(n / 2, cache)); 
+  if ( n % 3 === 0) result = Math.min(result, getMinStepsMemo(n / 3, cache)); 
+  cache[n] = result + 1; 
+  return cache[n]; 
+}
+
+getMinSteps(6);
