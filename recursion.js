@@ -385,4 +385,19 @@ function getMinStepsMemo(n, cache = {}) {
   return cache[n]; 
 }
 
+// getMinSteps(6);
+
+function getMinStepsTab(n) {
+  const table = Array(n + 1).fill(Infinity) 
+  table[1] = 0; 
+  for (let i = 1; i < n; i++) {
+    if (i * 2 <= n) {
+      table[i * 2] = Math.min(table[i] + 1, table[i *  2]); 
+    }
+    if (i * 3 <= n) {
+      table[i * 3] = Math.min(table[i] + 1, table[i *  3]); 
+    }
+  }
+  return table[n]
+}
 getMinSteps(6);
