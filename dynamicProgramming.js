@@ -50,5 +50,23 @@ function longestPalindromicSubstring(string) {
       }
       return first; 
   }
+
+  function minNumberOfCoinsForChange(n, denoms) {
+    // Write your code here.
+      // create an array with a size of n + 1. 
+      const numOfCoins = Array.from({length: n + 1}, () => Infinity); 
+      // Set the first element to 0; --> the first index is 0 coins. 
+      numOfCoins[0] = 0; 
+      // iterate over our denominations 
+      for (const denom of denoms) {
+          for (let amount = 0; amount < numOfCoins.length; amount++) {
+              if (denom <= amount) {
+                  numOfCoins[amount] = Math.min(numOfCoins[amount], numOfCoins[amount - denom] + 1);
+              }
+          }
+      }
+      return numOfCoins[n] !== Infinity ? numOfCoins[n] : - 1;
+  }
+  
   
   
