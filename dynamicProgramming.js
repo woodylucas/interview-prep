@@ -67,6 +67,25 @@ function longestPalindromicSubstring(string) {
       }
       return numOfCoins[n] !== Infinity ? numOfCoins[n] : - 1;
   }
+
+  function numberOfWaysToMakeChange(n, denoms) {
+    // Write your code here.
+      // initialize a function that will have an array size of n + 1, and have arbitrary values of 0.
+      const ways = Array.from({length: n + 1}, () => 0); 
+      ways[0] = 1; // Store the first element to 1 we can only have 1 amount of coin of 0.
+      // iterate through our denominations array. 
+      for (const denom of denoms) {
+          // iterate through our ways array and use out index as the amount 
+          for (let amount = 1; amount < ways.length; amount++) {
+              if (amount >= denom) {
+                  ways[amount] += ways[amount - denom];
+              }
+          }
+      }
+      return ways[n]; // return ways of the element of end could also return the last element
+  }
+  
+
   
   
   
