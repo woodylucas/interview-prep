@@ -85,7 +85,86 @@ function longestPalindromicSubstring(string) {
       return ways[n]; // return ways of the element of end could also return the last element
   }
   
-
+  function smallestSubstringContaining(bigString, smallString) {
+    // Write your code here.
+      // create a hash table for the small string
+      const targetCharCounts = getCharCounts(smallString);
+      const substringBounds = getSubstringBounds(bigString, targetCharCounts);
+      return getStringFromBounds(bigString, substringBounds); 
+  }
+  
+  
+  // Building up out character counts with a loop
+  function getCharCounts(string) {
+      const charCounts = {}; 
+      for (const char of string) {
+          increaseCharCount(char, charCounts); 
+      }
+      return charCounts;
+  }
+  
+  
+  // getSubstringBounds method 
+  function getSubstringBounds(string, targetCharCounts) {
+      let substringBounds = [0, Infinity]
+      // create a hash table for the substring characters counts in given substring --> building as we go 
+      const substringCharCounts = {}; 
+      const numUniqueChars = Object.keys(targetCharCounts).length; 
+      let numUniqueCharsDone = 0; // IF numUniqueCharsDone is set to 0 we are going to increment by 1 until its equal to the length of numOfUniqueChars count.
+      let leftIdx = 0;
+      let rightIdx = 0; 
+      // Move the rightIdx to the right in the string until you've counted 
+      // all of the target characters enough times. 
+      while (rightIdx < string.length) {
+          let rightChar = string[rightIdx]; 
+          if (!(rightChar in targetCharCounts)) {
+              rightIdx++; 
+              continue; 
+          }
+          // creating a hash for that substring 
+          increaseCharCount(rightChar, substringCharCounts);
+          if (substringCharCounts[rightChar] === targetCharCounts[rightChar]) {
+              numUniqueCharsDone++; 
+          }	
+          // when we found out numUniqueChars done is equal to our number of unique characters 
+          while (numUniqueCharsDone === numUniqueChars && leftIdx <= rightIdx) {
+              substringBounds = getCloserBounds(leftIdx, rightIdx, substringBounds[0], substringBounds[1]); 
+              let leftChar = string[leftIdx]; 
+              if (!(leftChar in targetCharCounts)) {
+                  leftIdx++; 
+                  continue; 
+              }
+              if (substringCharCounts[leftChar] === targetCharCounts[leftChar]) {
+                  numUniqueCharsDone--; 
+              }
+              decreaseCharCount(leftChar, substringCharCounts)
+              leftIdx++; 
+          }
+          rightIdx++; 
+      }
+      return substringBounds; 
+  }
+  
+  function getCloserBounds(idx1, idx2, idx3, idx4) {
+      return idx2 - idx1 < idx4 - idx3 ? [idx1, idx2] : [idx3, idx4];
+  }
+  
+  function getStringFromBounds(string,bounds) {
+      const [start, end] = bounds; 
+      if (end === Infinity) return ''; 
+      return string.slice(start, end + 1); 
+  }
+  
+  // increasing our character count
+  function increaseCharCount(char, charCounts) {
+      charCounts[char] = (charCounts[char] || 0) + 1; 
+  }
+  
+  // decreasing our character count
+  function decreaseCharCount(char, charCounts) {
+      charCounts[char]--; 
+  }
+  
   
   
   
