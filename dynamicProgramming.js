@@ -165,6 +165,27 @@ function longestPalindromicSubstring(string) {
       charCounts[char]--; 
   }
   
-  
+  function maxProfitWithKTransactions(prices, k) {
+	// O(nk) time | O(nk) space
+	// prices; are our prices of stock 
+	// k; are out transactions
+	if (!prices.length) return 0; 
+	// Create a 2D array.
+	const profits = []; 
+	for (let t = 0; t < k + 1; t++) {
+		// placeholder of 0 to help build out our array by filling first row with zero
+		const row =  Array.from({length: prices.length}, () => 0); 
+		profits.push(row); 
+	}
+	for (let t = 1; t < k + 1; t++) {
+		// initialize an arbitrary placeholder store w/ -Infinity so for our first comparison -Infinity will always be smaller 
+		let maxThusFar = -Infinity; 
+		for (let d = 1; d < prices.length; d++) {
+			maxThusFar = Math.max(maxThusFar, profits[t - 1][d - 1] - prices[d - 1]); 
+			profits[t][d] = Math.max(profits[t][d - 1], maxThusFar + prices[d])
+		}
+	}
+	return profits[k][prices.length - 1]; 
+}
   
   
