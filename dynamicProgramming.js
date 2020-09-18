@@ -211,3 +211,14 @@ function maxProfitWithKTransactions(prices, k) {
       }
       return k % 2 === 0 ? evenProfits[prices.length - 1] : oddProfits[prices.length - 1]; 
   }
+
+  var maxProfit = function(prices) {
+    let maxProfit = 0; 
+    let lowestPrice = prices[0]
+    for (let i = 1; i < prices.length; i++) {
+        const price = prices[i]
+        lowestPrice = Math.min(lowestPrice, price);
+        maxProfit = Math.max(maxProfit, price - lowestPrice); 
+    }
+    return maxProfit; 
+};
