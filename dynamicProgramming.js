@@ -188,4 +188,26 @@ function longestPalindromicSubstring(string) {
 	return profits[k][prices.length - 1]; 
 }
   
-  
+function maxProfitWithKTransactions(prices, k) {
+    // O(nk) | O(n) space
+      if (!prices.length) return 0; 
+      // by implementing two rows we can swap 
+      const evenProfits = Array.from({length: prices.length}, () => 0);
+      const oddProfits = Array.from({length: prices.length}, () => 0); 
+      for (let t = 1; t < k + 1; t++) {
+          let maxThusFar = -Infinity; 
+          let currentProfits, previousProfits; 
+          if (t % 2 === 1) {
+              currentProfits = oddProfits; 
+              previousProfits = evenProfits; 
+          } else {
+              currentProfits = evenProfits; 
+              previousProfits = oddProfits; 
+          }
+          for (let d = 1; d < prices.length; d++) {
+              maxThusFar = Math.max(maxThusFar, previousProfits[d - 1] - prices[d - 1]); 
+              currentProfits[d] = Math.max(currentProfits[d - 1], maxThusFar + prices[d]);
+          }
+      }
+      return k % 2 === 0 ? evenProfits[prices.length - 1] : oddProfits[prices.length - 1]; 
+  }
