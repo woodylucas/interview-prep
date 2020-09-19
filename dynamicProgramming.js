@@ -187,7 +187,8 @@ function longestPalindromicSubstring(string) {
 	}
 	return profits[k][prices.length - 1]; 
 }
-  
+
+// more optimal approach
 function maxProfitWithKTransactions(prices, k) {
     // O(nk) | O(n) space
       if (!prices.length) return 0; 
@@ -197,6 +198,7 @@ function maxProfitWithKTransactions(prices, k) {
       for (let t = 1; t < k + 1; t++) {
           let maxThusFar = -Infinity; 
           let currentProfits, previousProfits; 
+          // if we are dealing with an odd # of transactions
           if (t % 2 === 1) {
               currentProfits = oddProfits; 
               previousProfits = evenProfits; 
@@ -204,6 +206,7 @@ function maxProfitWithKTransactions(prices, k) {
               currentProfits = evenProfits; 
               previousProfits = oddProfits; 
           }
+          console.log('odd # transactions:', oddProfits)
           for (let d = 1; d < prices.length; d++) {
               maxThusFar = Math.max(maxThusFar, previousProfits[d - 1] - prices[d - 1]); 
               currentProfits[d] = Math.max(currentProfits[d - 1], maxThusFar + prices[d]);
@@ -211,6 +214,7 @@ function maxProfitWithKTransactions(prices, k) {
       }
       return k % 2 === 0 ? evenProfits[prices.length - 1] : oddProfits[prices.length - 1]; 
   }
+  
 
   var maxProfit = function(prices) {
     let maxProfit = 0; 
