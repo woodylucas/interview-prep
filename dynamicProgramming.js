@@ -226,3 +226,18 @@ function maxProfitWithKTransactions(prices, k) {
     }
     return maxProfit; 
 };
+
+function maxProduct(nums) {
+    let minThusFar = nums[0];  
+    let maxThusFar = nums[0]; 
+    let max = nums[0]
+    
+    for (let i = 1; i < nums.length; i++) {
+        const num = nums[i]; 
+        let maxTemp = maxThusFar; 
+        maxThusFar = Math.max(num, num * minThusFar, num * maxThusFar); 
+        minThusFar = Math.min(num, num * minThusFar, num * maxTemp); 
+        max = Math.max(max, maxThusFar)
+    }
+    return max;   
+};
