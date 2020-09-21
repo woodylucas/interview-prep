@@ -289,3 +289,23 @@ function waterArea(heights) {
       return surfaceArea; 
   }
   
+  function longestSubstringWithoutDuplication(string) {
+    // Write your code here.
+      const seen = {}; 
+      let startIdx = 0; // Starting at index 0 we have no duplicate strings 
+      let longest = [0, 1]; 
+      for (let i = 0; i < string.length; i++) {
+          const char = string[i];
+          // IF the character already exist in string 
+          if (char in seen) {
+              // Set the startIdx to the index at the seen character plus 1
+              startIdx = Math.max(startIdx, seen[char] + 1);
+          }
+          if (longest[1] - longest[0] < i + 1 - startIdx) {
+              longest = [startIdx, i + 1];
+          }
+          seen[char] = i;
+      }
+      return string.slice(longest[0], longest[1]); 
+  }
+  
