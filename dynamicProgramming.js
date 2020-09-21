@@ -265,3 +265,27 @@ function waterArea(heights) {
       }
       return maxes.reduce((a, b) => a + b, 0); 
   }
+
+
+  function waterArea(heights) {
+    // Write your code here.
+      let leftIdx = 0;
+      let rightIdx = heights.length - 1;
+      let leftMax = heights[leftIdx]; 
+      let rightMax = heights[rightIdx]; 
+      let surfaceArea = 0; 
+      
+      while (leftIdx < rightIdx) {
+          if (heights[leftIdx] < heights[rightIdx]) {
+              leftIdx++; 
+              leftMax = Math.max(leftMax, heights[leftIdx]);
+              surfaceArea += leftMax - heights[leftIdx]; 
+          } else {
+              rightIdx--; 
+              rightMax = Math.max(rightMax, heights[rightIdx]);
+              surfaceArea += rightMax - heights[rightIdx]; 
+          }
+      }
+      return surfaceArea; 
+  }
+  
