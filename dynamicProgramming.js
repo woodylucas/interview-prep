@@ -349,20 +349,21 @@ function waterArea(heights) {
     // Write your code here.
       // Build a subarray filled with zeros.
    const knapsackValues = []; 
-      for (let i = 0; i < items.length + 1; i++) {
+      for (let i = 0; i <= items.length; i++) {
           const row = Array.from({length: capacity + 1}, () => 0); 
           knapsackValues.push(row); 
       }
-      for (let i = 1; i < items.length + 1; i++) {
-          const currentWeight = items[i - 1][1]; 
+      for (let i = 1; i <= items.length; i++) {
           const currentValue = items[i - 1][0]; 
-          for (let c = 0; c < capacity + 1; c++) {
+          const currentWeight = items[i - 1][1]; 
+          for (let c = 0; c <= capacity; c++) {
               if (currentWeight > c) {
+                  // when we are given more than 1 item and weight is larger we retrieve the previous item.
                   knapsackValues[i][c] = knapsackValues[i - 1][c]; 
               } else {
                   knapsackValues[i][c] = Math.max(
                       knapsackValues[i - 1][c], 
-                      knapsackValues[i - 1][c - currentWeight] + currentValue,
+                      knapsackValues[i - 1][c - currentWeight] + currentValue
                   ); 
               }
           }
@@ -372,18 +373,22 @@ function waterArea(heights) {
   
   function getKnapsackItems(knapsackValues, items) {
       const sequence = []; 
-      let i = knapsackValues.length - 1; 
+      // length of the last subarray
+      let i = knapsackValues.length - 1;
+      // length the last element in the specific subarray
       let c = knapsackValues[0].length - 1; 
       while (i > 0) {
           if (knapsackValues[i][c] === knapsackValues[i - 1][c]) {
-              i -= 1; 
+              i--; 
           } else {
               sequence.unshift(i - 1); 
               c -= items[i - 1][1]; 
-              i -= 1; 
+              i--; 
           }
+          // We're at a capacity of zero so we can stop, we're not inserting anymore items
           if (c === 0) break;
       }
       return sequence; 
   }
+  
   
