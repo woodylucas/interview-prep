@@ -391,4 +391,12 @@ function waterArea(heights) {
       return sequence; 
   }
   
+  function sumDp(n) {
+    const sum = Array.from({length: n + 1}, () => 0); 
+    for (let i = 1; i <= n; i++) {
+      sum[i] = sum[i - 1] + i; 
+    }
+    return sum[n]
+  }
   
+  sumDp(7)

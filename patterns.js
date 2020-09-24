@@ -955,7 +955,7 @@ function pivot(arr, start = 0, end = arr.length - 1) {
 // console.log(pivot([4,8,2,1,5,7,6,3]));
 
 function quickSort(arr, left = 0, right = arr.length - 1) {
-    if(left < right) {
+    if (left < right) {
         let pivotIndex = pivot(arr, left, right); 
         // LEFT side 
         quickSort(arr, left, pivotIndex - 1);
@@ -966,7 +966,7 @@ function quickSort(arr, left = 0, right = arr.length - 1) {
    
 }
 
-// console.log(quickSort([4,6,9,1,2,5,3])); 
+console.log(quickSort([4,6,9,1,2,5,3])); 
 
 // RADIX SORT 
 
