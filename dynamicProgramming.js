@@ -412,3 +412,19 @@ function climbingStairs(n) {
   }
   
 //   climbingStairs(8); // 34
+
+// FRAMEWORK for dp 
+
+/* 
+
+1. Define the objective function 
+
+2. identify base cases 
+
+3. Write down a transition function 
+
+4. Identify the order of execution 
+
+5. Where to look for the answer 
+
+*/
