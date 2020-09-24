@@ -402,14 +402,16 @@ function waterArea(heights) {
 //   sumDp(7)
 
 function climbingStairs(n) {
-    const steps = Array.from({length: n + 1}); 
-    steps[0] = 1; 
-    steps[1] = 1; 
+    const lastTwo = [1, 1]; 
     for (let i = 2; i <= n; i++) {
-      steps[i] = steps[i - 1] + steps[i - 2]; 
+      const nextSteps = lastTwo[0] + lastTwo[1]; 
+      lastTwo[0] = lastTwo[1]
+      lastTwo[1] = nextSteps; 
     }
-    return steps[n]; 
+    return n > 1 ? lastTwo[1] : lastTwo[1]; 
   }
+  
+  climbingStairs(8); // 34
   
 //   climbingStairs(8); // 34
 
