@@ -415,6 +415,16 @@ function climbingStairs(n) {
   
 //   climbingStairs(8); // 34
 
+
+function factorial(n) {
+    const product = Array.from({length: n + 1}, () => 0); 
+    product[0] = 1;
+    for (let i = 1; i <= n; i++) {
+      product[i] = product[i - 1] * i
+    }
+    return product[n]; 
+  }
+
 // FRAMEWORK for dp 
 
 /* 
