@@ -401,3 +401,18 @@ function getMinStepsTab(n) {
   return table[n]
 }
 getMinSteps(6);
+
+
+function findSix(nums) {
+  let hasSix = 'no'; 
+  for (const num of nums) {
+    if (num === 6) {
+      hasSix = 'yes'; 
+    }
+    if (Array.isArray(num)) {
+      hasSix = findSix(num); 
+    }
+  }
+  return hasSix; 
+}
+findSix([[1,2,3],[4,5,[6]]]); 
