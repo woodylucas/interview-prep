@@ -425,6 +425,22 @@ function factorial(n) {
     return product[n]; 
   }
 
+
+
+  function maxSumAdjacent(array) {
+    let second = array[0]; 
+    let first = Math.max(array[0], array[1]); 
+    for (let i = 2; i < array.length; i++) {
+      const element = array[i]; 
+      const current = Math.max(first, second + element); 
+      second = first; 
+      first = current; 
+    }
+    return first; 
+  }
+  
+  maxSumAdjacent([7,10,12,7,9,14]); 
+
 // FRAMEWORK for dp 
 
 /* 
