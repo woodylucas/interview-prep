@@ -1012,5 +1012,23 @@ function radixSort(nums) {
 // console.log(radixSort([23,345,5467,12,2345,9852])); 
 
 
+function solve(arr){
+    //..
+  arr.sort((a , b) => a - b); 
+  let leftIdx = 0; 
+  let rightIdx = arr.length - 1; 
+  const maxMin = []; 
+  while (leftIdx <= rightIdx) {
+    if (leftIdx !== rightIdx) {
+      maxMin.push(arr[rightIdx], arr[leftIdx]); 
+    } else {
+      maxMin.push(arr[leftIdx]);
+    }
+    leftIdx++;
+    rightIdx--; 
+  }
+  return maxMin;
+};
+
                             
 

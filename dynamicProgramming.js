@@ -439,7 +439,7 @@ function factorial(n) {
     return first; 
   }
   
-  maxSumAdjacent([7,10,12,7,9,14]); 
+//   maxSumAdjacent([7,10,12,7,9,14]); 
 
 // FRAMEWORK for dp 
 
