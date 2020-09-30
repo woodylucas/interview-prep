@@ -416,3 +416,16 @@ function findSix(nums) {
   return hasSix; 
 }
 findSix([[1,2,3],[4,5,[6]]]); 
+
+
+function sum(array) {
+  return _sum(array, 0)
+}
+
+function _sum(array, idx) {
+  
+  if (idx === array.length) return 0; 
+  return array[idx] + _sum(array, idx + 1); 
+}
+
+sum([1, 5, 7, - 2]); 
