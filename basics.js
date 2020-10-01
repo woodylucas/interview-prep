@@ -234,24 +234,26 @@ const person = {
 }
 
  function validParentheses(string) {
+    
     // initialize an object to store the bracket pairs
     const bracket = {
-    '[':']',
-    '{':'}',
-    '(':')'
-    }
-    // 
-    const matchingBracket = []; 
-    // LOOP through the string, obtain the characters
-    for (const char of string) {
-        // IF the character is in the bracket store its value
-        if (char in bracket) {
-            matchingBracket.push(bracket[char]);
-        } else {
-            // IF the first removed character doesn't match the next character FALSE 
-            if (matchingBracket.pop() !== char) return false; 
+        '[':']',
+        '{':'}',
+        '(':')'
         }
-    }
-    // IF array is empty return true
-    if (!matchingBracket.length) return true; 
-};
+        // 
+        const matchingBracket = []; 
+        // LOOP through the string, obtain the characters
+        for (const char of string) {
+            // IF the character is in the bracket store its value
+            if (char in bracket) {
+                matchingBracket.push(bracket[char]);
+            } else {
+                // IF the first removed character doesn't match the next character FALSE 
+                if (matchingBracket.pop() !== char) return false; 
+            }
+        }
+        // IF array is empty return true
+        return (!matchingBracket.length);
+    };
+    
