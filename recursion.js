@@ -400,7 +400,7 @@ function getMinStepsTab(n) {
   }
   return table[n]
 }
-getMinSteps(6);
+// getMinSteps(6);
 
 
 function findSix(nums) {
@@ -415,7 +415,7 @@ function findSix(nums) {
   }
   return hasSix; 
 }
-findSix([[1,2,3],[4,5,[6]]]); 
+// findSix([[1,2,3],[4,5,[6]]]); 
 
 
 function sum(array) {
@@ -428,4 +428,4 @@ function _sum(array, idx) {
   return array[idx] + _sum(array, idx + 1); 
 }
 
-sum([1, 5, 7, - 2]); 
+// sum([1, 5, 7, - 2]); 
