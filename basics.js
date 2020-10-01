@@ -233,3 +233,25 @@ const person = {
     }
 }
 
+var isValid = function(s) {
+    // initialize an object to store the bracket pairs
+    const bracket = {
+    '[':']',
+    '{':'}',
+    '(':')'
+    }
+    // 
+    const matchingBracket = []; 
+    // LOOP through the string, obtain the characters
+    for (const char of string) {
+        // IF the character is in the bracket flip it
+        if (char in bracket) {
+            openBracket.push(bracket[char]);
+        } else {
+            // IF the first removed character doesn't match the next character FALSE 
+            if (openBracket.pop() !== char) return false; 
+        }
+    }
+    // IF array is empty return true
+    if (!openBracket.length) return true; 
+};
