@@ -256,4 +256,11 @@ const person = {
         // IF array is empty return true
         return (!matchingBracket.length);
     };
+
+    var orderedCount = function (text) {
+        // Implement me!
+        const letters = [...new Set(text)];
+        const output = letters.map(letter => [letter, text.split(letter).length - 1])
+        return output; 
+      }
     
