@@ -429,3 +429,16 @@ function _sum(array, idx) {
 }
 
 sum([1, 5, 7, - 2]); 
+
+function stepPerms(n) {
+  const lastThree = [1, 2, 4]; 
+  let counter = 4; 
+  while (counter <= n) {
+      let sum = lastThree[0] + lastThree[1] + lastThree[2];
+      lastThree[0] = lastThree[1]; 
+      lastThree[1] = lastThree[2]; 
+      lastThree[2] = sum; 
+      counter++; 
+  }
+  return n <= 1 ? lastThree[0] : lastThree[2];
+}
