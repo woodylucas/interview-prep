@@ -442,3 +442,9 @@ function stepPerms(n) {
   }
   return n <= 1 ? lastThree[0] : lastThree[2];
 }
+
+
+function superDigit(n, k) {
+  n = n.split("").reduce((a, b) => +a + +b) * k + "";
+  return (n.length > 1) ? superDigit(n, 1) : n.charAt(0);
+}
