@@ -41,3 +41,6 @@ const fetchRequest = (url) => {
 }
 
 console.log(fetchRequest(starWarsURL)); 
+
+
+// axios 
