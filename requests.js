@@ -1,5 +1,5 @@
 // XMLHttpRequest
-
+/*
 const firstRequest = new XMLHttpRequest(); 
 firstRequest.addEventListener('load', function () {
     console.log('IT WORKED'); 
@@ -17,3 +17,15 @@ firstRequest.addEventListener('error', () => {
 firstRequest.open('GET', "https://swapi.dev/api/planets/"); 
 firstRequest.send(); 
 console.log('Request Sent')
+*/ 
+
+// FETCH Request *No support in IE*
+
+const starWarsURL = "https://swapi.dev/api/planets/"
+
+const fetchRequest = (url) => {
+    return fetch(url)
+            .then(resp => resp.json())
+}
+
+console.log(fetchRequest(starWarsURL).then(data => console.log('Star Wars:', data))); 
