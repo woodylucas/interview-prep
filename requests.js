@@ -20,7 +20,7 @@ console.log('Request Sent')
 */ 
 
 // FETCH Request *No support in IE*
-
+/*
 const starWarsURL = "https://swapi.dev/api/planets/"
 
 const fetchRequest = (url) => {
@@ -42,5 +42,23 @@ const fetchRequest = (url) => {
 
 console.log(fetchRequest(starWarsURL)); 
 
+*/
+
 
 // axios 
+
+const starWarsURL = "https://swapi.dev/api/planets/"
+
+function axiosRequest(api) {
+    return axios
+    .get(api)
+    .then(resp => {
+        console.log(resp);
+    })
+    .catch((err) => {
+        console.log("IN CATCH CALLBACK")
+        console.log(err)
+    })
+}
+
+console.log(axiosRequest(starWarsURL))
