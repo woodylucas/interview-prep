@@ -52,12 +52,17 @@ const starWarsURL = "https://swapi.dev/api/planets/"
 function axiosRequest(api) {
     return axios
     .get(api)
-    .then(resp => {
-        console.log(resp);
-    })
-    .catch((err) => {
-        console.log("IN CATCH CALLBACK")
-        console.log(err)
+    .then(({ data }) => {
+        console.log(data);
+        for (const planet of data.results) {
+            console.log(planet.name);
+        }
+        axios.get(data.next).then(({ data }) => {
+            console.log(data); 
+            for (let planet of data.results) {
+                console.log(planet.name);
+            }
+        })
     })
 }
 
