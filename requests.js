@@ -25,7 +25,19 @@ const starWarsURL = "https://swapi.dev/api/planets/"
 
 const fetchRequest = (url) => {
     return fetch(url)
-            .then(resp => resp.json())
+        .then(resp => {
+            if (!resp.ok) 
+                throw new Error(`Status Code Error ${resp.status}`);
+            resp.json().then(data => {
+                for (const planet of data.results) {
+                    console.log(planet.name)
+                }
+            });
+        })
+        .catch((err) => {
+            console.log('SOMETHING WENT WRONG WITH FETCH')
+            console.log(err);
+        })
 }
 
-console.log(fetchRequest(starWarsURL).then(data => console.log('Star Wars:', data))); 
+console.log(fetchRequest(starWarsURL)); 
