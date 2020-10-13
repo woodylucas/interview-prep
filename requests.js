@@ -4,10 +4,11 @@ const firstRequest = new XMLHttpRequest();
 firstRequest.addEventListener('load', function () {
     console.log('IT WORKED'); 
     const data = JSON.parse(this.responseText);
-    for (const planet of data.results) {
-        console.log(planet.name);
-    }
-    console.log(data)
+    console.log(data.results)
+    // for (const planet of data.results) {
+    //     console.log(planet.name);
+    // }
+    // console.log(data)
 ;})
 
 firstRequest.addEventListener('error', () => {
