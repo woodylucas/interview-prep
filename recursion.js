@@ -310,7 +310,7 @@ function arrayPairs(arr) {
   return results; 
 }
 
-arrayPairs([1, 2, 3, 4, 5, 6])
+// arrayPairs([1, 2, 3, 4, 5, 6])
 
 
 function power(base, exponent) {
@@ -372,7 +372,7 @@ function numUniqueEmails(emails) {
   }
   return lookup.size; 
 }
-numUniqueEmails(input); 
+// numUniqueEmails(input); 
 
 function getMinStepsMemo(n, cache = {}) {
   if (n === 1) return 0; 
@@ -400,7 +400,7 @@ function getMinStepsTab(n) {
   }
   return table[n]
 }
-getMinSteps(6);
+// getMinStepsTab(6);
 
 
 function findSix(nums) {
@@ -415,7 +415,7 @@ function findSix(nums) {
   }
   return hasSix; 
 }
-findSix([[1,2,3],[4,5,[6]]]); 
+// findSix([[1,2,3],[4,5,[6]]]); 
 
 
 function sum(array) {
@@ -428,7 +428,7 @@ function _sum(array, idx) {
   return array[idx] + _sum(array, idx + 1); 
 }
 
-sum([1, 5, 7, - 2]); 
+// sum([1, 5, 7, - 2]); 
 
 function stepPerms(n) {
   const lastThree = [1, 2, 4]; 
@@ -448,3 +448,22 @@ function superDigit(n, k) {
   n = n.split("").reduce((a, b) => +a + +b) * k + "";
   return (n.length > 1) ? superDigit(n, 1) : n.charAt(0);
 }
+
+
+
+function waysToMakeChange(n, denoms) {
+  if (n === 0) return 1; 
+  if (n < 0) return 0; 
+
+  let numCombos = 0; 
+
+  
+  numCombos += waysToMakeChange(n - denoms.slice(1))
+  return numCombos; 
+}
+
+console.log(waysToMakeChange(10, [1, 5, 10])); 
+
+
+
+
