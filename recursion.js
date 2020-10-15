@@ -451,18 +451,18 @@ function superDigit(n, k) {
 
 
 
-function waysToMakeChange(n, denoms) {
+function waysToMakeChange(n, denoms, coins = 0) {
   if (n === 0) return 1; 
   if (n < 0) return 0; 
 
   let numCombos = 0; 
-
-  
-  numCombos += waysToMakeChange(n - denoms.slice(1))
+  for (let coin = coins; coin < denoms.length; coin++) {
+    numCombos += waysToMakeChange(n - denoms[coin], denoms, coin); 
+  }
   return numCombos; 
 }
 
-console.log(waysToMakeChange(10, [1, 5, 10])); 
+console.log(waysToMakeChange(4, [1, 2])); 
 
 
 
